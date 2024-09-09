@@ -23,17 +23,36 @@ func init() {
 		},
 		func() interface{} {
 			j := jsiiProxy_Datadog{}
+			_jsii_.InitJsiiProxy(&j.jsiiProxy_DatadogLambda)
+			return &j
+		},
+	)
+	_jsii_.RegisterClass(
+		"datadog-cdk-constructs-v2.DatadogLambda",
+		reflect.TypeOf((*DatadogLambda)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addForwarderToNonLambdaLogGroups", GoMethod: "AddForwarderToNonLambdaLogGroups"},
+			_jsii_.MemberMethod{JsiiMethod: "addGitCommitMetadata", GoMethod: "AddGitCommitMetadata"},
+			_jsii_.MemberMethod{JsiiMethod: "addLambdaFunctions", GoMethod: "AddLambdaFunctions"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberProperty{JsiiProperty: "props", GoGetter: "Props"},
+			_jsii_.MemberProperty{JsiiProperty: "scope", GoGetter: "Scope"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberProperty{JsiiProperty: "transport", GoGetter: "Transport"},
+		},
+		func() interface{} {
+			j := jsiiProxy_DatadogLambda{}
 			_jsii_.InitJsiiProxy(&j.Type__constructsConstruct)
 			return &j
 		},
 	)
 	_jsii_.RegisterStruct(
-		"datadog-cdk-constructs-v2.DatadogProps",
-		reflect.TypeOf((*DatadogProps)(nil)).Elem(),
+		"datadog-cdk-constructs-v2.DatadogLambdaProps",
+		reflect.TypeOf((*DatadogLambdaProps)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
-		"datadog-cdk-constructs-v2.DatadogStrictProps",
-		reflect.TypeOf((*DatadogStrictProps)(nil)).Elem(),
+		"datadog-cdk-constructs-v2.DatadogLambdaStrictProps",
+		reflect.TypeOf((*DatadogLambdaStrictProps)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"datadog-cdk-constructs-v2.Node",

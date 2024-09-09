@@ -12,7 +12,7 @@ import (
 	"github.com/aws/constructs-go/constructs/v10"
 )
 
-func (d *jsiiProxy_Datadog) validateAddForwarderToNonLambdaLogGroupsParameters(logGroups *[]awslogs.ILogGroup) error {
+func (d *jsiiProxy_DatadogLambda) validateAddForwarderToNonLambdaLogGroupsParameters(logGroups *[]awslogs.ILogGroup) error {
 	if logGroups == nil {
 		return fmt.Errorf("parameter logGroups is required, but nil was provided")
 	}
@@ -20,7 +20,7 @@ func (d *jsiiProxy_Datadog) validateAddForwarderToNonLambdaLogGroupsParameters(l
 	return nil
 }
 
-func (d *jsiiProxy_Datadog) validateAddGitCommitMetadataParameters(lambdaFunctions *[]interface{}) error {
+func (d *jsiiProxy_DatadogLambda) validateAddGitCommitMetadataParameters(lambdaFunctions *[]interface{}) error {
 	if lambdaFunctions == nil {
 		return fmt.Errorf("parameter lambdaFunctions is required, but nil was provided")
 	}
@@ -40,7 +40,7 @@ func (d *jsiiProxy_Datadog) validateAddGitCommitMetadataParameters(lambdaFunctio
 	return nil
 }
 
-func (d *jsiiProxy_Datadog) validateAddLambdaFunctionsParameters(lambdaFunctions *[]interface{}) error {
+func (d *jsiiProxy_DatadogLambda) validateAddLambdaFunctionsParameters(lambdaFunctions *[]interface{}) error {
 	if lambdaFunctions == nil {
 		return fmt.Errorf("parameter lambdaFunctions is required, but nil was provided")
 	}
@@ -60,7 +60,7 @@ func (d *jsiiProxy_Datadog) validateAddLambdaFunctionsParameters(lambdaFunctions
 	return nil
 }
 
-func validateDatadog_IsConstructParameters(x interface{}) error {
+func validateDatadogLambda_IsConstructParameters(x interface{}) error {
 	if x == nil {
 		return fmt.Errorf("parameter x is required, but nil was provided")
 	}
@@ -68,7 +68,7 @@ func validateDatadog_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func (j *jsiiProxy_Datadog) validateSetPropsParameters(val *DatadogLambdaProps) error {
+func (j *jsiiProxy_DatadogLambda) validateSetPropsParameters(val *DatadogLambdaProps) error {
 	if val == nil {
 		return fmt.Errorf("parameter val is required, but nil was provided")
 	}
@@ -79,7 +79,7 @@ func (j *jsiiProxy_Datadog) validateSetPropsParameters(val *DatadogLambdaProps) 
 	return nil
 }
 
-func (j *jsiiProxy_Datadog) validateSetScopeParameters(val constructs.Construct) error {
+func (j *jsiiProxy_DatadogLambda) validateSetScopeParameters(val constructs.Construct) error {
 	if val == nil {
 		return fmt.Errorf("parameter val is required, but nil was provided")
 	}
@@ -87,7 +87,7 @@ func (j *jsiiProxy_Datadog) validateSetScopeParameters(val constructs.Construct)
 	return nil
 }
 
-func (j *jsiiProxy_Datadog) validateSetTransportParameters(val Transport) error {
+func (j *jsiiProxy_DatadogLambda) validateSetTransportParameters(val Transport) error {
 	if val == nil {
 		return fmt.Errorf("parameter val is required, but nil was provided")
 	}
@@ -95,7 +95,7 @@ func (j *jsiiProxy_Datadog) validateSetTransportParameters(val Transport) error 
 	return nil
 }
 
-func validateNewDatadogParameters(scope constructs.Construct, id *string, props *DatadogLambdaProps) error {
+func validateNewDatadogLambdaParameters(scope constructs.Construct, id *string, props *DatadogLambdaProps) error {
 	if scope == nil {
 		return fmt.Errorf("parameter scope is required, but nil was provided")
 	}

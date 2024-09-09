@@ -6,15 +6,11 @@ import (
 
 	"github.com/aws/aws-cdk-go/awscdk/v2/awslogs"
 	"github.com/aws/constructs-go/constructs/v10"
+	"github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/internal"
 )
 
-// For backward compatibility.
-//
-// To be deprecated.
-// It's recommended to use DatadogLambda for users who want to add Datadog
-// monitoring for Lambda functions.
-type Datadog interface {
-	DatadogLambda
+type DatadogLambda interface {
+	constructs.Construct
 	// The tree node.
 	Node() constructs.Node
 	Props() *DatadogLambdaProps
@@ -30,12 +26,12 @@ type Datadog interface {
 	ToString() *string
 }
 
-// The jsii proxy struct for Datadog
-type jsiiProxy_Datadog struct {
-	jsiiProxy_DatadogLambda
+// The jsii proxy struct for DatadogLambda
+type jsiiProxy_DatadogLambda struct {
+	internal.Type__constructsConstruct
 }
 
-func (j *jsiiProxy_Datadog) Node() constructs.Node {
+func (j *jsiiProxy_DatadogLambda) Node() constructs.Node {
 	var returns constructs.Node
 	_jsii_.Get(
 		j,
@@ -45,7 +41,7 @@ func (j *jsiiProxy_Datadog) Node() constructs.Node {
 	return returns
 }
 
-func (j *jsiiProxy_Datadog) Props() *DatadogLambdaProps {
+func (j *jsiiProxy_DatadogLambda) Props() *DatadogLambdaProps {
 	var returns *DatadogLambdaProps
 	_jsii_.Get(
 		j,
@@ -55,7 +51,7 @@ func (j *jsiiProxy_Datadog) Props() *DatadogLambdaProps {
 	return returns
 }
 
-func (j *jsiiProxy_Datadog) Scope() constructs.Construct {
+func (j *jsiiProxy_DatadogLambda) Scope() constructs.Construct {
 	var returns constructs.Construct
 	_jsii_.Get(
 		j,
@@ -65,7 +61,7 @@ func (j *jsiiProxy_Datadog) Scope() constructs.Construct {
 	return returns
 }
 
-func (j *jsiiProxy_Datadog) Transport() Transport {
+func (j *jsiiProxy_DatadogLambda) Transport() Transport {
 	var returns Transport
 	_jsii_.Get(
 		j,
@@ -76,16 +72,16 @@ func (j *jsiiProxy_Datadog) Transport() Transport {
 }
 
 
-func NewDatadog(scope constructs.Construct, id *string, props *DatadogLambdaProps) Datadog {
+func NewDatadogLambda(scope constructs.Construct, id *string, props *DatadogLambdaProps) DatadogLambda {
 	_init_.Initialize()
 
-	if err := validateNewDatadogParameters(scope, id, props); err != nil {
+	if err := validateNewDatadogLambdaParameters(scope, id, props); err != nil {
 		panic(err)
 	}
-	j := jsiiProxy_Datadog{}
+	j := jsiiProxy_DatadogLambda{}
 
 	_jsii_.Create(
-		"datadog-cdk-constructs-v2.Datadog",
+		"datadog-cdk-constructs-v2.DatadogLambda",
 		[]interface{}{scope, id, props},
 		&j,
 	)
@@ -93,17 +89,17 @@ func NewDatadog(scope constructs.Construct, id *string, props *DatadogLambdaProp
 	return &j
 }
 
-func NewDatadog_Override(d Datadog, scope constructs.Construct, id *string, props *DatadogLambdaProps) {
+func NewDatadogLambda_Override(d DatadogLambda, scope constructs.Construct, id *string, props *DatadogLambdaProps) {
 	_init_.Initialize()
 
 	_jsii_.Create(
-		"datadog-cdk-constructs-v2.Datadog",
+		"datadog-cdk-constructs-v2.DatadogLambda",
 		[]interface{}{scope, id, props},
 		d,
 	)
 }
 
-func (j *jsiiProxy_Datadog)SetProps(val *DatadogLambdaProps) {
+func (j *jsiiProxy_DatadogLambda)SetProps(val *DatadogLambdaProps) {
 	if err := j.validateSetPropsParameters(val); err != nil {
 		panic(err)
 	}
@@ -114,7 +110,7 @@ func (j *jsiiProxy_Datadog)SetProps(val *DatadogLambdaProps) {
 	)
 }
 
-func (j *jsiiProxy_Datadog)SetScope(val constructs.Construct) {
+func (j *jsiiProxy_DatadogLambda)SetScope(val constructs.Construct) {
 	if err := j.validateSetScopeParameters(val); err != nil {
 		panic(err)
 	}
@@ -125,7 +121,7 @@ func (j *jsiiProxy_Datadog)SetScope(val constructs.Construct) {
 	)
 }
 
-func (j *jsiiProxy_Datadog)SetTransport(val Transport) {
+func (j *jsiiProxy_DatadogLambda)SetTransport(val Transport) {
 	if err := j.validateSetTransportParameters(val); err != nil {
 		panic(err)
 	}
@@ -140,16 +136,16 @@ func (j *jsiiProxy_Datadog)SetTransport(val Transport) {
 //
 // Returns: true if `x` is an object created from a class which extends `Construct`.
 // Deprecated: use `x instanceof Construct` instead.
-func Datadog_IsConstruct(x interface{}) *bool {
+func DatadogLambda_IsConstruct(x interface{}) *bool {
 	_init_.Initialize()
 
-	if err := validateDatadog_IsConstructParameters(x); err != nil {
+	if err := validateDatadogLambda_IsConstructParameters(x); err != nil {
 		panic(err)
 	}
 	var returns *bool
 
 	_jsii_.StaticInvoke(
-		"datadog-cdk-constructs-v2.Datadog",
+		"datadog-cdk-constructs-v2.DatadogLambda",
 		"isConstruct",
 		[]interface{}{x},
 		&returns,
@@ -158,7 +154,7 @@ func Datadog_IsConstruct(x interface{}) *bool {
 	return returns
 }
 
-func (d *jsiiProxy_Datadog) AddForwarderToNonLambdaLogGroups(logGroups *[]awslogs.ILogGroup) {
+func (d *jsiiProxy_DatadogLambda) AddForwarderToNonLambdaLogGroups(logGroups *[]awslogs.ILogGroup) {
 	if err := d.validateAddForwarderToNonLambdaLogGroupsParameters(logGroups); err != nil {
 		panic(err)
 	}
@@ -169,7 +165,7 @@ func (d *jsiiProxy_Datadog) AddForwarderToNonLambdaLogGroups(logGroups *[]awslog
 	)
 }
 
-func (d *jsiiProxy_Datadog) AddGitCommitMetadata(lambdaFunctions *[]interface{}, gitCommitSha *string, gitRepoUrl *string) {
+func (d *jsiiProxy_DatadogLambda) AddGitCommitMetadata(lambdaFunctions *[]interface{}, gitCommitSha *string, gitRepoUrl *string) {
 	if err := d.validateAddGitCommitMetadataParameters(lambdaFunctions); err != nil {
 		panic(err)
 	}
@@ -180,7 +176,7 @@ func (d *jsiiProxy_Datadog) AddGitCommitMetadata(lambdaFunctions *[]interface{},
 	)
 }
 
-func (d *jsiiProxy_Datadog) AddLambdaFunctions(lambdaFunctions *[]interface{}, construct constructs.Construct) {
+func (d *jsiiProxy_DatadogLambda) AddLambdaFunctions(lambdaFunctions *[]interface{}, construct constructs.Construct) {
 	if err := d.validateAddLambdaFunctionsParameters(lambdaFunctions); err != nil {
 		panic(err)
 	}
@@ -191,7 +187,7 @@ func (d *jsiiProxy_Datadog) AddLambdaFunctions(lambdaFunctions *[]interface{}, c
 	)
 }
 
-func (d *jsiiProxy_Datadog) ToString() *string {
+func (d *jsiiProxy_DatadogLambda) ToString() *string {
 	var returns *string
 
 	_jsii_.Invoke(

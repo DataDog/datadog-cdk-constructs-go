@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-cdk-go/awscdk/v2/awssecretsmanager"
 )
 
-type DatadogProps struct {
+type DatadogLambdaProps struct {
 	AddLayers *bool `field:"optional" json:"addLayers" yaml:"addLayers"`
 	ApiKey *string `field:"optional" json:"apiKey" yaml:"apiKey"`
 	ApiKeySecret awssecretsmanager.ISecret `field:"optional" json:"apiKeySecret" yaml:"apiKeySecret"`
