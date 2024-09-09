@@ -8,17 +8,12 @@ import (
 	"github.com/aws/constructs-go/constructs/v10"
 )
 
-// For backward compatibility.
-//
-// To be deprecated.
-// It's recommended to use DatadogLambda for users who want to add Datadog
-// monitoring for Lambda functions.
 type Datadog interface {
 	DatadogLambda
 	// The tree node.
 	Node() constructs.Node
-	Props() *DatadogLambdaProps
-	SetProps(val *DatadogLambdaProps)
+	Props() *DatadogProps
+	SetProps(val *DatadogProps)
 	Scope() constructs.Construct
 	SetScope(val constructs.Construct)
 	Transport() Transport
@@ -45,8 +40,8 @@ func (j *jsiiProxy_Datadog) Node() constructs.Node {
 	return returns
 }
 
-func (j *jsiiProxy_Datadog) Props() *DatadogLambdaProps {
-	var returns *DatadogLambdaProps
+func (j *jsiiProxy_Datadog) Props() *DatadogProps {
+	var returns *DatadogProps
 	_jsii_.Get(
 		j,
 		"props",
@@ -76,7 +71,7 @@ func (j *jsiiProxy_Datadog) Transport() Transport {
 }
 
 
-func NewDatadog(scope constructs.Construct, id *string, props *DatadogLambdaProps) Datadog {
+func NewDatadog(scope constructs.Construct, id *string, props *DatadogProps) Datadog {
 	_init_.Initialize()
 
 	if err := validateNewDatadogParameters(scope, id, props); err != nil {
@@ -93,7 +88,7 @@ func NewDatadog(scope constructs.Construct, id *string, props *DatadogLambdaProp
 	return &j
 }
 
-func NewDatadog_Override(d Datadog, scope constructs.Construct, id *string, props *DatadogLambdaProps) {
+func NewDatadog_Override(d Datadog, scope constructs.Construct, id *string, props *DatadogProps) {
 	_init_.Initialize()
 
 	_jsii_.Create(
@@ -103,7 +98,7 @@ func NewDatadog_Override(d Datadog, scope constructs.Construct, id *string, prop
 	)
 }
 
-func (j *jsiiProxy_Datadog)SetProps(val *DatadogLambdaProps) {
+func (j *jsiiProxy_Datadog)SetProps(val *DatadogProps) {
 	if err := j.validateSetPropsParameters(val); err != nil {
 		panic(err)
 	}
