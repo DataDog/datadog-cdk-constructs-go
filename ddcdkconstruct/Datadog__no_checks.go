@@ -20,7 +20,7 @@ func validateDatadog_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func (j *jsiiProxy_Datadog) validateSetPropsParameters(val *DatadogProps) error {
+func (j *jsiiProxy_Datadog) validateSetPropsParameters(val *DatadogLambdaProps) error {
 	return nil
 }
 

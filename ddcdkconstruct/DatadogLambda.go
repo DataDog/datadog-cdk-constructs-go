@@ -13,8 +13,8 @@ type DatadogLambda interface {
 	constructs.Construct
 	// The tree node.
 	Node() constructs.Node
-	Props() *DatadogProps
-	SetProps(val *DatadogProps)
+	Props() *DatadogLambdaProps
+	SetProps(val *DatadogLambdaProps)
 	Scope() constructs.Construct
 	SetScope(val constructs.Construct)
 	Transport() Transport
@@ -41,8 +41,8 @@ func (j *jsiiProxy_DatadogLambda) Node() constructs.Node {
 	return returns
 }
 
-func (j *jsiiProxy_DatadogLambda) Props() *DatadogProps {
-	var returns *DatadogProps
+func (j *jsiiProxy_DatadogLambda) Props() *DatadogLambdaProps {
+	var returns *DatadogLambdaProps
 	_jsii_.Get(
 		j,
 		"props",
@@ -72,7 +72,7 @@ func (j *jsiiProxy_DatadogLambda) Transport() Transport {
 }
 
 
-func NewDatadogLambda(scope constructs.Construct, id *string, props *DatadogProps) DatadogLambda {
+func NewDatadogLambda(scope constructs.Construct, id *string, props *DatadogLambdaProps) DatadogLambda {
 	_init_.Initialize()
 
 	if err := validateNewDatadogLambdaParameters(scope, id, props); err != nil {
@@ -89,7 +89,7 @@ func NewDatadogLambda(scope constructs.Construct, id *string, props *DatadogProp
 	return &j
 }
 
-func NewDatadogLambda_Override(d DatadogLambda, scope constructs.Construct, id *string, props *DatadogProps) {
+func NewDatadogLambda_Override(d DatadogLambda, scope constructs.Construct, id *string, props *DatadogLambdaProps) {
 	_init_.Initialize()
 
 	_jsii_.Create(
@@ -99,7 +99,7 @@ func NewDatadogLambda_Override(d DatadogLambda, scope constructs.Construct, id *
 	)
 }
 
-func (j *jsiiProxy_DatadogLambda)SetProps(val *DatadogProps) {
+func (j *jsiiProxy_DatadogLambda)SetProps(val *DatadogLambdaProps) {
 	if err := j.validateSetPropsParameters(val); err != nil {
 		panic(err)
 	}

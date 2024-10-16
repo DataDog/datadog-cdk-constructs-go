@@ -4,11 +4,7 @@ import (
 	"github.com/aws/aws-cdk-go/awscdk/v2/awssecretsmanager"
 )
 
-// For backward compatibility.
-//
-// It's recommended to use DatadogLambdaProps for
-// users who want to add Datadog monitoring for Lambda functions.
-type DatadogProps struct {
+type DatadogLambdaProps struct {
 	AddLayers *bool `field:"optional" json:"addLayers" yaml:"addLayers"`
 	ApiKey *string `field:"optional" json:"apiKey" yaml:"apiKey"`
 	ApiKeySecret awssecretsmanager.ISecret `field:"optional" json:"apiKeySecret" yaml:"apiKeySecret"`

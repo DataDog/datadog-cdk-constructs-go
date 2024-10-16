@@ -47,6 +47,14 @@ func init() {
 		},
 	)
 	_jsii_.RegisterStruct(
+		"datadog-cdk-constructs-v2.DatadogLambdaProps",
+		reflect.TypeOf((*DatadogLambdaProps)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"datadog-cdk-constructs-v2.DatadogLambdaStrictProps",
+		reflect.TypeOf((*DatadogLambdaStrictProps)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"datadog-cdk-constructs-v2.DatadogProps",
 		reflect.TypeOf((*DatadogProps)(nil)).Elem(),
 	)

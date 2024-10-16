@@ -4,11 +4,7 @@ import (
 	"github.com/aws/aws-cdk-go/awscdk/v2/awssecretsmanager"
 )
 
-// For backward compatibility.
-//
-// It's recommended to use DatadogLambdaStrictProps for
-// users who want to add Datadog monitoring for Lambda functions.
-type DatadogStrictProps struct {
+type DatadogLambdaStrictProps struct {
 	AddLayers *bool `field:"required" json:"addLayers" yaml:"addLayers"`
 	CaptureLambdaPayload *bool `field:"required" json:"captureLambdaPayload" yaml:"captureLambdaPayload"`
 	EnableDatadogASM *bool `field:"required" json:"enableDatadogASM" yaml:"enableDatadogASM"`

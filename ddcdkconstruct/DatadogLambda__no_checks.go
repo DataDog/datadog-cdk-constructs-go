@@ -20,7 +20,7 @@ func validateDatadogLambda_IsConstructParameters(x interface{}) error {
 	return nil
 }
 
-func (j *jsiiProxy_DatadogLambda) validateSetPropsParameters(val *DatadogProps) error {
+func (j *jsiiProxy_DatadogLambda) validateSetPropsParameters(val *DatadogLambdaProps) error {
 	return nil
 }
 
@@ -32,7 +32,7 @@ func (j *jsiiProxy_DatadogLambda) validateSetTransportParameters(val Transport) 
 	return nil
 }
 
-func validateNewDatadogLambdaParameters(scope constructs.Construct, id *string, props *DatadogProps) error {
+func validateNewDatadogLambdaParameters(scope constructs.Construct, id *string, props *DatadogLambdaProps) error {
 	return nil
 }
 

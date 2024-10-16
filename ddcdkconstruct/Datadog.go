@@ -8,12 +8,16 @@ import (
 	"github.com/aws/constructs-go/constructs/v10"
 )
 
+// For backward compatibility.
+//
+// It's recommended to use DatadogLambda for
+// users who want to add Datadog monitoring for Lambda functions.
 type Datadog interface {
 	DatadogLambda
 	// The tree node.
 	Node() constructs.Node
-	Props() *DatadogProps
-	SetProps(val *DatadogProps)
+	Props() *DatadogLambdaProps
+	SetProps(val *DatadogLambdaProps)
 	Scope() constructs.Construct
 	SetScope(val constructs.Construct)
 	Transport() Transport
@@ -40,8 +44,8 @@ func (j *jsiiProxy_Datadog) Node() constructs.Node {
 	return returns
 }
 
-func (j *jsiiProxy_Datadog) Props() *DatadogProps {
-	var returns *DatadogProps
+func (j *jsiiProxy_Datadog) Props() *DatadogLambdaProps {
+	var returns *DatadogLambdaProps
 	_jsii_.Get(
 		j,
 		"props",
@@ -98,7 +102,7 @@ func NewDatadog_Override(d Datadog, scope constructs.Construct, id *string, prop
 	)
 }
 
-func (j *jsiiProxy_Datadog)SetProps(val *DatadogProps) {
+func (j *jsiiProxy_Datadog)SetProps(val *DatadogLambdaProps) {
 	if err := j.validateSetPropsParameters(val); err != nil {
 		panic(err)
 	}
