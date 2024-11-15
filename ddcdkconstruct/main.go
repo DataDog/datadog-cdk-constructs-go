@@ -58,6 +58,27 @@ func init() {
 		"datadog-cdk-constructs-v2.DatadogProps",
 		reflect.TypeOf((*DatadogProps)(nil)).Elem(),
 	)
+	_jsii_.RegisterClass(
+		"datadog-cdk-constructs-v2.DatadogStepFunctions",
+		reflect.TypeOf((*DatadogStepFunctions)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "addStateMachines", GoMethod: "AddStateMachines"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberProperty{JsiiProperty: "props", GoGetter: "Props"},
+			_jsii_.MemberProperty{JsiiProperty: "scope", GoGetter: "Scope"},
+			_jsii_.MemberProperty{JsiiProperty: "stack", GoGetter: "Stack"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+		},
+		func() interface{} {
+			j := jsiiProxy_DatadogStepFunctions{}
+			_jsii_.InitJsiiProxy(&j.Type__constructsConstruct)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"datadog-cdk-constructs-v2.DatadogStepFunctionsProps",
+		reflect.TypeOf((*DatadogStepFunctionsProps)(nil)).Elem(),
+	)
 	_jsii_.RegisterStruct(
 		"datadog-cdk-constructs-v2.DatadogStrictProps",
 		reflect.TypeOf((*DatadogStrictProps)(nil)).Elem(),
