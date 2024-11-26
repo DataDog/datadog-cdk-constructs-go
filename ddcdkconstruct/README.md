@@ -25,7 +25,11 @@ Two separate versions of Datadog CDK Constructs exist; `datadog-cdk-constructs` 
 * `datadog-cdk-constructs-v2` contains more features.
 * Otherwise, the use of the two packages is identical.
 
-## npm Package Installation:
+## Lambda
+
+### Package Installation
+
+#### npm
 
 For use with AWS CDK v2:
 
@@ -43,7 +47,7 @@ yarn add --dev datadog-cdk-constructs
 npm install datadog-cdk-constructs --save-dev
 ```
 
-## PyPI Package Installation:
+#### PyPI
 
 For use with AWS CDK v2:
 
@@ -57,7 +61,11 @@ For use with AWS CDK v1:
 pip install datadog-cdk-constructs
 ```
 
-## Go Package Installation:
+##### Note:
+
+Pay attention to the output from your package manager as the `Datadog CDK Construct Library` has peer dependencies.
+
+#### Go
 
 For use with AWS CDK v2:
 
@@ -67,16 +75,11 @@ go get github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct
 
 AWS CDK v1 is not supported.
 
-### Note:
+### Usage
 
-Pay attention to the output from your package manager as the `Datadog CDK Construct Library` has peer dependencies.
+#### AWS CDK
 
-## Usage
-
-### AWS CDK
-
-* *If you are new to AWS CDK then check out this [workshop](https://cdkworkshop.com/15-prerequisites.html).*
-* *The following examples assume the use of AWS CDK v2. If you're using CDK v1, import `datadog-cdk-constructs` rather than `datadog-cdk-constructs-v2`.*
+*The following examples assume the use of AWS CDK v2. If you're using CDK v1, import `datadog-cdk-constructs` rather than `datadog-cdk-constructs-v2`.*
 
 Add this to your CDK stack:
 
@@ -85,7 +88,7 @@ Add this to your CDK stack:
 ```go
 import { DatadogLambda } from "datadog-cdk-constructs-v2";
 
-const datadog = new DatadogLambda(this, "Datadog", {
+const datadogLambda = new DatadogLambda(this, "datadogLambda", {
   nodeLayerVersion: <LAYER_VERSION>,
   pythonLayerVersion: <LAYER_VERSION>,
   javaLayerVersion: <LAYER_VERSION>,
@@ -110,8 +113,8 @@ const datadog = new DatadogLambda(this, "Datadog", {
   version: <STRING>, //Optional
   tags: <STRING>, //Optional
 });
-datadog.addLambdaFunctions([<LAMBDA_FUNCTIONS>])
-datadog.addForwarderToNonLambdaLogGroups([<LOG_GROUPS>])
+datadogLambda.addLambdaFunctions([<LAMBDA_FUNCTIONS>])
+datadogLambda.addForwarderToNonLambdaLogGroups([<LOG_GROUPS>])
 ```
 
 #### Go
@@ -120,7 +123,7 @@ datadog.addForwarderToNonLambdaLogGroups([<LOG_GROUPS>])
 import (
 	"github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct"
 )
-datadog := ddcdkconstruct.NewDatadogLambda(
+datadogLambda := ddcdkconstruct.NewDatadogLambda(
     stack,
     jsii.String("Datadog"),
     &ddcdkconstruct.DatadogLambdaProps{
@@ -130,11 +133,11 @@ datadog := ddcdkconstruct.NewDatadogLambda(
         ApiKey:                jsii.String(os.Getenv("DD_API_KEY")),
         // ...
     })
-datadog.AddLambdaFunctions(&[]interface{}{myFunction}, nil)
-datadog.AddForwarderToNonLambdaLogGroups()
+datadogLambda.AddLambdaFunctions(&[]interface{}{myFunction}, nil)
+datadogLambda.AddForwarderToNonLambdaLogGroups()
 ```
 
-## Source Code Integration
+### Source Code Integration
 
 [Source code integration](https://docs.datadoghq.com/integrations/guide/source-code-integration/) is enabled by default through automatic lambda tagging, and will work if:
 
@@ -144,7 +147,7 @@ datadog.AddForwarderToNonLambdaLogGroups()
   * `datadog-cdk-constructs-v2` >= 1.4.0
   * `datadog-cdk-constructs` >= 0.8.5
 
-### Alternative Methods to Enable Source Code Integration
+#### Alternative Methods to Enable Source Code Integration
 
 If the automatic implementation doesn't work for your case, please follow one of the two guides below.
 
@@ -197,25 +200,25 @@ export class ExampleStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps, gitHash?: string) {
     ...
     ...
-    datadog.addGitCommitMetadata([<YOUR_FUNCTIONS>], gitHash)
+    datadogLambda.addGitCommitMetadata([<YOUR_FUNCTIONS>], gitHash)
   }
 }
 ```
 
 </details>
 
-## Configuration
+### Configuration
 
-To further configure your Datadog construct, use the following custom parameters:
+To further configure your DatadogLambda construct for Lambda, use the following custom parameters:
 
-*Note*: The descriptions use the npm package parameters, but they also apply to the PyPI package parameters.
+*Note*: The descriptions use the npm package parameters, but they also apply to PyPI and Go package parameters.
 
 | npm package parameter        | PyPI package parameter          | Description                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ---------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `addLayers`                  | `add_layers`                    | Whether to add the runtime Lambda Layers or expect the user to bring their own. Defaults to `true`. When `true`, the Lambda Library version variables are also required. When `false`, you must include the Datadog Lambda library in your functions' deployment packages.                                                                                                                                                     |
 | `pythonLayerVersion`         | `python_layer_version`          | Version of the Python Lambda layer to install, such as `83`. Required if you are deploying at least one Lambda function written in Python and `addLayers` is `true`. Find the latest version number [here](https://github.com/DataDog/datadog-lambda-python/releases).                                                                                                                                                                                                                 |
 | `nodeLayerVersion`           | `node_layer_version`            | Version of the Node.js Lambda layer to install, such as `100`. Required if you are deploying at least one Lambda function written in Node.js and `addLayers` is `true`. Find the latest version number from [here](https://github.com/DataDog/datadog-lambda-js/releases).                                                                                                                                                                                                         |
-| `javaLayerVersion`           | `java_layer_version`            | Version of the Java layer to install, such as `8`. Required if you are deploying at least one Lambda function written in Java and `addLayers` is `true`. Find the latest version number in the [Serverless Java installation documentation](https://docs.datadoghq.com/serverless/installation/java/?tab=awscdk). **Note**: `extensionLayerVersion >= 25` and `javaLayerVersion >= 5` are required for the Datadog construct to instrument your Java functions properly.                        |
+| `javaLayerVersion`           | `java_layer_version`            | Version of the Java layer to install, such as `8`. Required if you are deploying at least one Lambda function written in Java and `addLayers` is `true`. Find the latest version number in the [Serverless Java installation documentation](https://docs.datadoghq.com/serverless/installation/java/?tab=awscdk). **Note**: `extensionLayerVersion >= 25` and `javaLayerVersion >= 5` are required for the DatadogLambda construct to instrument your Java functions properly.                  |
 | `dotnetLayerVersion`         | `dotnet_layer_version`          | Version of the .NET layer to install, such as `13`. Required if you are deploying at least one Lambda function written in .NET and `addLayers` is `true`. Find the latest version number from [here](https://github.com/DataDog/dd-trace-dotnet-aws-lambda-layer/releases).                                                                                                                                                                                                                      |
 | `extensionLayerVersion`      | `extension_layer_version`       | Version of the Datadog Lambda Extension layer to install, such as 5. When `extensionLayerVersion` is set, `apiKey` (or if encrypted, `apiKMSKey` or `apiKeySecretArn`) needs to be set as well. When enabled, lambda function log groups will not be subscribed by the forwarder. Learn more about the Lambda extension [here](https://docs.datadoghq.com/serverless/datadog_lambda_library/extension/). **Note**: If this parameter is set, it adds a layer even if `addLayers` is set to `false`. |
 | `forwarderArn`               | `forwarder_arn`                 | When set, the plugin will automatically subscribe the Datadog Forwarder to the functions' log groups. Do not set `forwarderArn` when `extensionLayerVersion` is set.                                                                                                                                                                                                                                                           |
@@ -247,7 +250,7 @@ To further configure your Datadog construct, use the following custom parameters
 
 **Note**: Using the parameters above may override corresponding function level `DD_XXX` environment variables.
 
-### Tracing
+#### Tracing
 
 Enable X-Ray Tracing on your Lambda functions. For more information, see [CDK documentation](https://docs.aws.amazon.com/cdk/api/latest/docs/@aws-cdk_aws-lambda.Tracing.html).
 
@@ -262,12 +265,12 @@ const lambda_function = new lambda.Function(this, "HelloHandler", {
 });
 ```
 
-### Nested Stacks
+#### Nested Stacks
 
 Add the Datadog CDK Construct to each stack you wish to instrument with Datadog. In the example below, we initialize the Datadog CDK Construct and call `addLambdaFunctions()` in both the `RootStack` and `NestedStack`.
 
 ```go
-import { Datadog } from "datadog-cdk-constructs-v2";
+import { DatadogLambda } from "datadog-cdk-constructs-v2";
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 
@@ -276,7 +279,7 @@ class RootStack extends cdk.Stack {
     super(scope, id, props);
     new NestedStack(this, "NestedStack");
 
-    const datadog = new Datadog(this, "Datadog", {
+    const datadogLambda = new DatadogLambda(this, "DatadogLambda", {
       nodeLayerVersion: <LAYER_VERSION>,
       pythonLayerVersion: <LAYER_VERSION>,
       javaLayerVersion: <LAYER_VERSION>,
@@ -293,7 +296,7 @@ class RootStack extends cdk.Stack {
       enableDatadogLogs: <BOOLEAN>,
       injectLogContext: <BOOLEAN>
     });
-    datadog.addLambdaFunctions([<LAMBDA_FUNCTIONS>]);
+    datadogLambda.addLambdaFunctions([<LAMBDA_FUNCTIONS>]);
 
   }
 }
@@ -302,7 +305,7 @@ class NestedStack extends cdk.NestedStack {
   constructor(scope: Construct, id: string, props?: cdk.NestedStackProps) {
     super(scope, id, props);
 
-    const datadog = new Datadog(this, "Datadog", {
+    const datadogLambda = new DatadogLambda(this, "DatadogLambda", {
       nodeLayerVersion: <LAYER_VERSION>,
       pythonLayerVersion: <LAYER_VERSION>,
       javaLayerVersion: <LAYER_VERSION>,
@@ -319,28 +322,28 @@ class NestedStack extends cdk.NestedStack {
       enableDatadogLogs: <BOOLEAN>,
       injectLogContext: <BOOLEAN>
     });
-    datadog.addLambdaFunctions([<LAMBDA_FUNCTIONS>]);
+    datadogLambda.addLambdaFunctions([<LAMBDA_FUNCTIONS>]);
 
   }
 }
 ```
 
-### Tags
+#### Tags
 
 Add tags to your constructs. We recommend setting an `env` and `service` tag to tie Datadog telemetry together. For more information see [official AWS documentation](https://docs.aws.amazon.com/cdk/latest/guide/tagging.html) and [CDK documentation](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.Tags.html).
 
-## Automatically grant AWS secret read access to Lambda execution role
+### Automatically grant AWS secret read access to Lambda execution role
 
 **Only available in datadog-cdk-constructs-v2**
 
-To automatically grant your Lambda execution roles read access to a given secret, pass in `apiKeySecret` in place of `apiKeySecretArn` when initializing the Datadog construct.
+To automatically grant your Lambda execution roles read access to a given secret, pass in `apiKeySecret` in place of `apiKeySecretArn` when initializing the DatadogLambda construct.
 
 ```go
 const { Secret } = require('aws-cdk-lib/aws-secretsmanager');
 
 const secret = Secret.fromSecretPartialArn(this, 'DatadogApiKeySecret', 'arn:aws:secretsmanager:us-west-1:123:secret:DATADOG_API_KEY');
 
-const datadog = new Datadog(this, 'Datadog', {
+const datadogLambda = new DatadogLambda(this, 'DatadogLambda', {
   ...
   apiKeySecret: secret
   ...
@@ -349,14 +352,294 @@ const datadog = new Datadog(this, 'Datadog', {
 
 When `addLambdaFunctions` is called, the Datadog CDK construct grants your Lambda execution roles read access to the given AWS secret. This is done through the [AWS ISecret's grantRead function](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_secretsmanager.ISecret.html#grantwbrreadgrantee-versionstages).
 
-## How it works
+### How it works
 
-The Datadog CDK construct takes in a list of lambda functions and installs the Datadog Lambda Library by attaching the Lambda Layers for [.NET](https://docs.datadoghq.com/serverless/aws_lambda/installation/dotnet), [Java](https://docs.datadoghq.com/serverless/installation/java/?tab=awscdk), [Node.js](https://github.com/DataDog/datadog-lambda-layer-js), and [Python](https://github.com/DataDog/datadog-lambda-layer-python) to your functions. It redirects to a replacement handler that initializes the Lambda Library without any required code changes. Additional configurations added to the Datadog CDK construct will also translate into their respective environment variables under each lambda function (if applicable / required).
+The DatadogLambda construct takes in a list of lambda functions and installs the Datadog Lambda Library by attaching the Lambda Layers for [.NET](https://docs.datadoghq.com/serverless/aws_lambda/installation/dotnet), [Java](https://docs.datadoghq.com/serverless/installation/java/?tab=awscdk), [Node.js](https://github.com/DataDog/datadog-lambda-layer-js), and [Python](https://github.com/DataDog/datadog-lambda-layer-python) to your functions. It redirects to a replacement handler that initializes the Lambda Library without any required code changes. Additional configurations added to the Datadog CDK construct will also translate into their respective environment variables under each lambda function (if applicable / required).
 
 While Lambda function based log groups are handled by the `addLambdaFunctions` method automatically, the construct has an additional function `addForwarderToNonLambdaLogGroups` which subscribes the forwarder to any additional log groups of your choosing.
 
+## Step Functions
+
+Only AWS CDK v2 is supported.
+
+### Usage
+
+#### TypeScript
+
+Example stack: [step-functions-typescript-stack](https://github.com/DataDog/datadog-cdk-constructs/tree/main/examples/step-functions-typescript-stack)
+
+##### Basic setup
+
+```
+import * as sfn from "aws-cdk-lib/aws-stepfunctions";
+import { DatadogStepFunctions} from "datadog-cdk-constructs-v2";
+
+const stateMachine = new sfn.StateMachine(...);
+const datadogSfn = new DatadogStepFunctions(this, "DatadogSfn", {
+  env: "<ENV>", // e.g. "dev"
+  service: "<SERVICE>", // e.g. "my-cdk-service"
+  version: "<VERSION>", // e.g. "1.0.0"
+  forwarderArn: "<FORWARDER_ARN>", // e.g. "arn:test:forwarder:sa-east-1:12345678:1"
+  tags: <TAGS>, // optional, e.g. "custom-tag-1:tag-value-1,custom-tag-2:tag-value-2"
+});
+datadogSfn.addStateMachines([stateMachine]);
+```
+
+##### Merging traces
+
+To merge the Step Function's traces with downstream Lambda function or Step function's traces, modify the Lambda task payload or Step Function task input:
+
+```
+import * as tasks from "aws-cdk-lib/aws-stepfunctions-tasks";
+import * as sfn from "aws-cdk-lib/aws-stepfunctions";
+import { DatadogStepFunctions, DatadogLambda } from "datadog-cdk-constructs-v2";
+
+const lambdaFunction = ...;
+const lambdaTask = new tasks.LambdaInvoke(this, "MyLambdaTask", {
+  lambdaFunction: lambdaFunction,
+  payload: sfn.TaskInput.fromObject(
+    DatadogStepFunctions.buildLambdaPayloadToMergeTraces(
+      { "custom-key": "custom-value" }
+    )
+  ),
+});
+
+const childStateMachine = new sfn.StateMachine(...);
+const invokeChildStateMachineTask = new tasks.StepFunctionsStartExecution(this, "InvokeChildStateMachineTask", {
+  stateMachine: childStateMachine,
+  input: sfn.TaskInput.fromObject(
+    DatadogStepFunctions.buildStepFunctionTaskInputToMergeTraces({ "custom-key": "custom-value" }),
+  ),
+});
+
+const stateMachine = new sfn.StateMachine(this, "CdkTypeScriptTestStateMachine", {
+  definitionBody: sfn.DefinitionBody.fromChainable(lambdaTask.next(invokeChildStateMachineTask)),
+});
+
+const datadogLambda = ...;
+datadogLambda.addLambdaFunctions([lambdaFunction]);
+
+const datadogSfn = ...;
+datadogSfn.addStateMachines([childStateMachine, stateMachine]);
+```
+
+#### Python
+
+Example stack: [step-functions-python-stack](https://github.com/DataDog/datadog-cdk-constructs/tree/main/examples/step-functions-python-stack)
+
+##### Basic setup
+
+```
+from aws_cdk import (
+    aws_stepfunctions as sfn,
+    aws_stepfunctions_tasks as tasks,
+)
+from datadog_cdk_constructs_v2 import DatadogStepFunctions, DatadogLambda
+
+state_machine = sfn.StateMachine(...)
+datadog_sfn = DatadogStepFunctions(
+    self,
+    "DatadogSfn",
+    env="<ENV>", # e.g. "dev"
+    service="<SERVICE>", # e.g. "my-cdk-service"
+    version="<VERSION>", # e.g. "1.0.0"
+    forwarderArn="<FORWARDER_ARN>", # e.g. "arn:test:forwarder:sa-east-1:12345678:1"
+    tags=<TAGS>, # optional, e.g. "custom-tag-1:tag-value-1,custom-tag-2:tag-value-2"
+)
+datadog_sfn.add_state_machines([child_state_machine, parent_state_machine])
+```
+
+##### Merging traces
+
+To merge the Step Function's traces with downstream Lambda function or Step function's traces, modify the Lambda task payload or Step Function task input:
+
+```
+from aws_cdk import (
+    aws_lambda,
+    aws_stepfunctions as sfn,
+    aws_stepfunctions_tasks as tasks,
+)
+from datadog_cdk_constructs_v2 import DatadogStepFunctions, DatadogLambda
+
+lambda_function = aws_lambda.Function(...)
+lambda_task = tasks.LambdaInvoke(
+    self,
+    "MyLambdaTask",
+    lambda_function=lambda_function,
+    payload=sfn.TaskInput.from_object(
+        DatadogStepFunctions.build_lambda_payload_to_merge_traces(
+            {"custom-key": "custom-value"}
+        )
+    ),
+)
+
+child_state_machine = sfn.StateMachine(...)
+invoke_child_state_machine_task = tasks.StepFunctionsStartExecution(
+    self,
+    "InvokeChildStateMachineTask",
+    state_machine=child_state_machine,
+    input=sfn.TaskInput.from_object(
+        DatadogStepFunctions.build_step_function_task_input_to_merge_traces(
+            {"custom-key": "custom-value"}
+        )
+    ),
+)
+
+state_machine = sfn.StateMachine(
+    self,
+    "CdkPythonTestStateMachine",
+    definition_body=sfn.DefinitionBody.from_chainable(
+        lambda_task.next(invoke_child_state_machine_task)
+    ),
+)
+
+datadog_lambda = DatadogLambda(...)
+datadog_lambda.add_lambda_functions([lambda_function])
+
+datadog_sfn = DatadogStepFunctions(...)
+datadog_sfn.add_state_machines([child_state_machine, state_machine])
+```
+
+#### Go
+
+Example stack: [step-functions-go-stack](https://github.com/DataDog/datadog-cdk-constructs/tree/main/examples/step-functions-go-stack)
+
+##### Basic setup
+
+```
+import (
+	"github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct"
+	"github.com/aws/aws-cdk-go/awscdk/v2"
+	sfn "github.com/aws/aws-cdk-go/awscdk/v2/awsstepfunctions"
+)
+
+stack := awscdk.NewStack(...)
+stateMachine := sfn.NewStateMachine(...)
+datadogSfn := ddcdkconstruct.NewDatadogStepFunctions(
+  stack,
+  jsii.String("DatadogSfn"),
+  &ddcdkconstruct.DatadogStepFunctionsProps{
+    Env:            jsii.String("<ENV>"), // e.g. "dev"
+    Service:        jsii.String("<SERVICE>), // e.g. "my-cdk-service"
+    Version:        jsii.String("<VERSION>"), // e.g. "1.0.0"
+    ForwarderArn:   jsii.String("<FORWARDER_ARN>"), // e.g. "arn:test:forwarder:sa-east-1:12345678:1"
+    Tags:           jsii.String("<TAGS>"), // optional, e.g. "custom-tag-1:tag-value-1,custom-tag-2:tag-value-2"
+  }
+)
+datadogSfn.AddStateMachines(&[]sfn.StateMachine{stateMachine}, nil)
+```
+
+##### Merging traces
+
+To merge the Step Function's traces with downstream Lambda function or Step function's traces, modify the Lambda task payload or Step Function task input:
+
+```
+import (
+	"github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct"
+	"github.com/aws/aws-cdk-go/awscdk/v2/awslambda"
+	sfn "github.com/aws/aws-cdk-go/awscdk/v2/awsstepfunctions"
+	sfntasks "github.com/aws/aws-cdk-go/awscdk/v2/awsstepfunctionstasks"
+	"github.com/aws/jsii-runtime-go"
+)
+
+lambdaFunction := awslambda.NewFunction(...)
+lambdaPayload := ddcdkconstruct.DatadogStepFunctions_BuildLambdaPayloadToMergeTraces(&map[string]interface{}{
+  "custom-key": "custom-value",
+})
+lambdaTask := sfntasks.NewLambdaInvoke(stack, jsii.String("MyLambdaTask"), &sfntasks.LambdaInvokeProps{
+  LambdaFunction: lambdaFunction,
+  Payload: sfn.TaskInput_FromObject(lambdaPayload),
+})
+
+childStateMachine := sfn.NewStateMachine(...)
+stateMachineTaskInput := ddcdkconstruct.DatadogStepFunctions_BuildStepFunctionTaskInputToMergeTraces(
+  &map[string]interface{}{
+    "custom-key": "custom-value",
+  }
+)
+invokeChildStateMachineTask := sfntasks.NewStepFunctionsStartExecution(
+  stack,
+  jsii.String("InvokeChildStateMachineTask"),
+  &sfntasks.StepFunctionsStartExecutionProps{
+    StateMachine: childStateMachine,
+    Input: sfn.TaskInput_FromObject(stateMachineTaskInput),
+  }
+)
+stateMachine := sfn.NewStateMachine(stack, jsii.String("CdkGoTestStateMachine"), &sfn.StateMachineProps{
+  DefinitionBody: sfn.DefinitionBody_FromChainable(lambdaTask.Next(invokeChildStateMachineTask)),
+})
+
+datadogLambda := ...
+datadogLambda.AddLambdaFunctions(&[]interface{}{lambdaFunction}, nil)
+
+datadogSfn := ...
+datadogSfn.AddStateMachines(&[]sfn.StateMachine{childStateMachine, stateMachine}, nil)
+```
+
+### Configuration
+
+Parameters for creating the `DatadogStepFunctions` construct:
+
+| npm package parameter | PyPI package parameter | Go package parameter | Description                                                                                                    |
+| --------------------- | ---------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `env`                 | `env`                  | `Env`                | The `env` tag to be added to the state machine.                                                                |
+| `service`             | `service`              | `Service`            | The `service` tag to be added to the state machine.                                                            |
+| `version`             | `version`              | `Version`            | The `version` tag to be added to the state machine.                                                            |
+| `forwarderArn`        | `forwarder_arn`        | `ForwarderArn`       | ARN or Datadog Forwarder, which will subscribe to the state machine's log group.                               |
+| `tags`                | `tags`                 | `Tags`               | A comma separated list of key:value pairs as a single string, which will be added to the state machine's tags. |
+
+### How it works
+
+The `DatadogStepFunctions` construct takes in a list of state machines and for each of them:
+
+1. Set up logging, including:
+
+   1. Set log level to ALL
+   2. Set includeExecutionData to true
+   3. Create and set destination log group (if not set already)
+   4. Add permissions to the state machine role to log to CloudWatch Logs
+2. Subscribe Datadog Forwarder to the state machine's log group
+3. Set tags, including:
+
+   1. `env`
+   2. `service`
+   3. `version`
+   4. `DD_TRACE_ENABLED`: `true`
+   5. `dd_cdk_construct` version tag
+   6. custom tags passed as the `tags` paramater to `DatadogStepFunctions` construct
+
+To merge the Step Function's traces with downstream Lambda function or Step function's traces, the construct adds `$$.Execution`, `$$.State` and `$$.StateMachine` fields into the Step Function task input or Lambda task payload.
+
+### Troubleshooting
+
+#### Log group already exists
+
+If `cdk deploy` fails with an error like:
+
+> Resource of type 'AWS::Logs::LogGroup' with identifier '{"/properties/LogGroupName":"/aws/vendedlogs/states/CdkStepFunctionsTypeScriptStack1-CdkTypeScriptTestChildStateMachine-Logs-dev"}' already exists.
+
+You have two options:
+
+1. Delete the log group if you no longer need the logs in it. You may do so from AWS Management Console, at CloudWatch -> Logs -> Log groups.
+2. Update the state machine definition if you wish to use the existing log group:
+
+```
+import * as logs from 'aws-cdk-lib/aws-logs';
+
+const logGroupName = "/aws/vendedlogs/states/xxx";
+const logGroup = logs.LogGroup.fromLogGroupName(stack, 'StateMachineLogGroup', logGroupName);
+
+const stateMachine = new sfn.StateMachine(stack, 'MyStateMachine', {
+  logs: {
+    destination: logGroup,
+  },
+  ...
+});
+```
+
 ## Resources to learn about CDK
 
+* If you are new to AWS CDK then check out this [workshop](https://cdkworkshop.com/15-prerequisites.html).
 * [CDK TypeScript Workshop](https://cdkworkshop.com/20-typescript.html)
 * [Video Introducing CDK by AWS with Demo](https://youtu.be/ZWCvNFUN-sU)
 * [CDK Concepts](https://youtu.be/9As_ZIjUGmY)
@@ -390,7 +673,7 @@ If you contribute to this package you can run the tests using `yarn test`. This 
 
 ### Debug Logs
 
-To display the debug logs for this library, set the `DD_CONSTRUCT_DEBUG_LOGS` env var to `true` when running `cdk synth` (use `--quiet` to suppress generated template output).
+To display the debug logs for this library for Lambda, set the `DD_CONSTRUCT_DEBUG_LOGS` env var to `true` when running `cdk synth` (use `--quiet` to suppress generated template output).
 
 Example:
 *Ensure you are at the root directory*

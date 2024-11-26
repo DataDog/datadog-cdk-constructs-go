@@ -111,6 +111,7 @@ func init() {
 			"ENV": TagKeys_ENV,
 			"SERVICE": TagKeys_SERVICE,
 			"VERSION": TagKeys_VERSION,
+			"DD_TRACE_ENABLED": TagKeys_DD_TRACE_ENABLED,
 		},
 	)
 	_jsii_.RegisterClass(
