@@ -4,7 +4,7 @@ package ddcdkconstruct
 
 // Building without runtime type checking enabled, so all the below just return nil
 
-func (t *jsiiProxy_Transport) validateApplyEnvVarsParameters(lambdas *[]awslambda.Function) error {
+func (t *jsiiProxy_Transport) validateApplyEnvVarsParameters(lam awslambda.Function) error {
 	return nil
 }
 

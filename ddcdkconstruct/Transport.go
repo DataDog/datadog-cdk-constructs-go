@@ -20,7 +20,7 @@ type Transport interface {
 	SetFlushMetricsToLogs(val *bool)
 	Site() *string
 	SetSite(val *string)
-	ApplyEnvVars(lambdas *[]awslambda.Function)
+	ApplyEnvVars(lam awslambda.Function)
 }
 
 // The jsii proxy struct for Transport
@@ -167,14 +167,14 @@ func (j *jsiiProxy_Transport)SetSite(val *string) {
 	)
 }
 
-func (t *jsiiProxy_Transport) ApplyEnvVars(lambdas *[]awslambda.Function) {
-	if err := t.validateApplyEnvVarsParameters(lambdas); err != nil {
+func (t *jsiiProxy_Transport) ApplyEnvVars(lam awslambda.Function) {
+	if err := t.validateApplyEnvVarsParameters(lam); err != nil {
 		panic(err)
 	}
 	_jsii_.InvokeVoid(
 		t,
 		"applyEnvVars",
-		[]interface{}{lambdas},
+		[]interface{}{lam},
 	)
 }
 

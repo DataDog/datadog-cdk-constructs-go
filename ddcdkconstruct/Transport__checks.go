@@ -8,9 +8,9 @@ import (
 	"github.com/aws/aws-cdk-go/awscdk/v2/awslambda"
 )
 
-func (t *jsiiProxy_Transport) validateApplyEnvVarsParameters(lambdas *[]awslambda.Function) error {
-	if lambdas == nil {
-		return fmt.Errorf("parameter lambdas is required, but nil was provided")
+func (t *jsiiProxy_Transport) validateApplyEnvVarsParameters(lam awslambda.Function) error {
+	if lam == nil {
+		return fmt.Errorf("parameter lam is required, but nil was provided")
 	}
 
 	return nil
