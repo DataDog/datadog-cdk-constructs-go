@@ -11,6 +11,12 @@ import (
 
 type DatadogLambda interface {
 	constructs.Construct
+	GitCommitShaOverride() *string
+	SetGitCommitShaOverride(val *string)
+	GitRepoUrlOverride() *string
+	SetGitRepoUrlOverride(val *string)
+	Lambdas() *[]interface{}
+	SetLambdas(val *[]interface{})
 	// The tree node.
 	Node() constructs.Node
 	Props() *DatadogLambdaProps
@@ -22,6 +28,7 @@ type DatadogLambda interface {
 	AddForwarderToNonLambdaLogGroups(logGroups *[]awslogs.ILogGroup)
 	AddGitCommitMetadata(lambdaFunctions *[]interface{}, gitCommitSha *string, gitRepoUrl *string)
 	AddLambdaFunctions(lambdaFunctions *[]interface{}, construct constructs.Construct)
+	OverrideGitMetadata(gitCommitSha *string, gitRepoUrl *string)
 	// Returns a string representation of this construct.
 	ToString() *string
 }
@@ -29,6 +36,36 @@ type DatadogLambda interface {
 // The jsii proxy struct for DatadogLambda
 type jsiiProxy_DatadogLambda struct {
 	internal.Type__constructsConstruct
+}
+
+func (j *jsiiProxy_DatadogLambda) GitCommitShaOverride() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"gitCommitShaOverride",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_DatadogLambda) GitRepoUrlOverride() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"gitRepoUrlOverride",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_DatadogLambda) Lambdas() *[]interface{} {
+	var returns *[]interface{}
+	_jsii_.Get(
+		j,
+		"lambdas",
+		&returns,
+	)
+	return returns
 }
 
 func (j *jsiiProxy_DatadogLambda) Node() constructs.Node {
@@ -96,6 +133,33 @@ func NewDatadogLambda_Override(d DatadogLambda, scope constructs.Construct, id *
 		"datadog-cdk-constructs-v2.DatadogLambda",
 		[]interface{}{scope, id, props},
 		d,
+	)
+}
+
+func (j *jsiiProxy_DatadogLambda)SetGitCommitShaOverride(val *string) {
+	_jsii_.Set(
+		j,
+		"gitCommitShaOverride",
+		val,
+	)
+}
+
+func (j *jsiiProxy_DatadogLambda)SetGitRepoUrlOverride(val *string) {
+	_jsii_.Set(
+		j,
+		"gitRepoUrlOverride",
+		val,
+	)
+}
+
+func (j *jsiiProxy_DatadogLambda)SetLambdas(val *[]interface{}) {
+	if err := j.validateSetLambdasParameters(val); err != nil {
+		panic(err)
+	}
+	_jsii_.Set(
+		j,
+		"lambdas",
+		val,
 	)
 }
 
@@ -184,6 +248,17 @@ func (d *jsiiProxy_DatadogLambda) AddLambdaFunctions(lambdaFunctions *[]interfac
 		d,
 		"addLambdaFunctions",
 		[]interface{}{lambdaFunctions, construct},
+	)
+}
+
+func (d *jsiiProxy_DatadogLambda) OverrideGitMetadata(gitCommitSha *string, gitRepoUrl *string) {
+	if err := d.validateOverrideGitMetadataParameters(gitCommitSha); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		d,
+		"overrideGitMetadata",
+		[]interface{}{gitCommitSha, gitRepoUrl},
 	)
 }
 

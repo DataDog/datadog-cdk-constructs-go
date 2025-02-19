@@ -60,9 +60,37 @@ func (d *jsiiProxy_Datadog) validateAddLambdaFunctionsParameters(lambdaFunctions
 	return nil
 }
 
+func (d *jsiiProxy_Datadog) validateOverrideGitMetadataParameters(gitCommitSha *string) error {
+	if gitCommitSha == nil {
+		return fmt.Errorf("parameter gitCommitSha is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateDatadog_IsConstructParameters(x interface{}) error {
 	if x == nil {
 		return fmt.Errorf("parameter x is required, but nil was provided")
+	}
+
+	return nil
+}
+
+func (j *jsiiProxy_Datadog) validateSetLambdasParameters(val *[]interface{}) error {
+	if val == nil {
+		return fmt.Errorf("parameter val is required, but nil was provided")
+	}
+	for idx_97dfc6, v := range *val {
+		switch v.(type) {
+		case awslambda.Function:
+			// ok
+		case awslambda.SingletonFunction:
+			// ok
+		default:
+			if !_jsii_.IsAnonymousProxy(v) {
+				return fmt.Errorf("parameter val[%#v] must be one of the allowed types: awslambda.Function, awslambda.SingletonFunction; received %#v (a %T)", idx_97dfc6, v, v)
+			}
+		}
 	}
 
 	return nil

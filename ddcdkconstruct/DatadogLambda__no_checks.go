@@ -16,7 +16,15 @@ func (d *jsiiProxy_DatadogLambda) validateAddLambdaFunctionsParameters(lambdaFun
 	return nil
 }
 
+func (d *jsiiProxy_DatadogLambda) validateOverrideGitMetadataParameters(gitCommitSha *string) error {
+	return nil
+}
+
 func validateDatadogLambda_IsConstructParameters(x interface{}) error {
+	return nil
+}
+
+func (j *jsiiProxy_DatadogLambda) validateSetLambdasParameters(val *[]interface{}) error {
 	return nil
 }
 
