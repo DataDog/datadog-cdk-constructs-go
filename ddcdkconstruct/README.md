@@ -651,6 +651,17 @@ const stateMachine = new sfn.StateMachine(stack, 'MyStateMachine', {
 
 The Datadog CDK Construct Libraries use Projen to maintain project configuration files such as the `package.json`, `.gitignore`, `.npmignore`, etc. Most of the configuration files will be protected by Projen via read-only permissions. In order to change these files, edit the `.projenrc.js` file, then run `npx projen` to synthesize the new changes. Check out [Projen](https://github.com/projen/projen) for more details.
 
+## Migrating from v2-1.x.x to v2-2.x.x
+
+In February 2025, Datadog released a major version update from `1.x.x` to `2.x.x`. The required changes to migrate to the new version are as follows:
+
+1. Rename the classes for instrumenting Lambda functions:
+
+   1. `Datadog` -> `DatadogLambda`
+   2. `DatadogProps` -> `DatadogLambdaProps`
+      For examples, see the [Usage](#usage) section of this page and [examples/](https://github.com/DataDog/datadog-cdk-constructs/tree/main/examples) folder of the GitHub repository.
+2. Upgrade Node.js version to `18.18.0` or above.
+
 ## Opening Issues
 
 If you encounter a bug with this package, we want to hear about it. Before opening a new issue, search the existing issues to avoid duplicates.

@@ -9,29 +9,6 @@ import (
 
 func init() {
 	_jsii_.RegisterClass(
-		"datadog-cdk-constructs-v2.Datadog",
-		reflect.TypeOf((*Datadog)(nil)).Elem(),
-		[]_jsii_.Member{
-			_jsii_.MemberMethod{JsiiMethod: "addForwarderToNonLambdaLogGroups", GoMethod: "AddForwarderToNonLambdaLogGroups"},
-			_jsii_.MemberMethod{JsiiMethod: "addGitCommitMetadata", GoMethod: "AddGitCommitMetadata"},
-			_jsii_.MemberMethod{JsiiMethod: "addLambdaFunctions", GoMethod: "AddLambdaFunctions"},
-			_jsii_.MemberProperty{JsiiProperty: "gitCommitShaOverride", GoGetter: "GitCommitShaOverride"},
-			_jsii_.MemberProperty{JsiiProperty: "gitRepoUrlOverride", GoGetter: "GitRepoUrlOverride"},
-			_jsii_.MemberProperty{JsiiProperty: "lambdas", GoGetter: "Lambdas"},
-			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
-			_jsii_.MemberMethod{JsiiMethod: "overrideGitMetadata", GoMethod: "OverrideGitMetadata"},
-			_jsii_.MemberProperty{JsiiProperty: "props", GoGetter: "Props"},
-			_jsii_.MemberProperty{JsiiProperty: "scope", GoGetter: "Scope"},
-			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
-			_jsii_.MemberProperty{JsiiProperty: "transport", GoGetter: "Transport"},
-		},
-		func() interface{} {
-			j := jsiiProxy_Datadog{}
-			_jsii_.InitJsiiProxy(&j.jsiiProxy_DatadogLambda)
-			return &j
-		},
-	)
-	_jsii_.RegisterClass(
 		"datadog-cdk-constructs-v2.DatadogLambda",
 		reflect.TypeOf((*DatadogLambda)(nil)).Elem(),
 		[]_jsii_.Member{
@@ -62,10 +39,6 @@ func init() {
 		"datadog-cdk-constructs-v2.DatadogLambdaStrictProps",
 		reflect.TypeOf((*DatadogLambdaStrictProps)(nil)).Elem(),
 	)
-	_jsii_.RegisterStruct(
-		"datadog-cdk-constructs-v2.DatadogProps",
-		reflect.TypeOf((*DatadogProps)(nil)).Elem(),
-	)
 	_jsii_.RegisterClass(
 		"datadog-cdk-constructs-v2.DatadogStepFunctions",
 		reflect.TypeOf((*DatadogStepFunctions)(nil)).Elem(),
@@ -86,10 +59,6 @@ func init() {
 	_jsii_.RegisterStruct(
 		"datadog-cdk-constructs-v2.DatadogStepFunctionsProps",
 		reflect.TypeOf((*DatadogStepFunctionsProps)(nil)).Elem(),
-	)
-	_jsii_.RegisterStruct(
-		"datadog-cdk-constructs-v2.DatadogStrictProps",
-		reflect.TypeOf((*DatadogStrictProps)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"datadog-cdk-constructs-v2.Node",
