@@ -1,12 +1,12 @@
-package ddcdkconstruct
+package ddcdkconstruct/v2
 
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
-	_init_ "github.com/DataDog/datadog-cdk-constructs-go/v2/ddcdkconstruct/v2/jsii"
+	_init_ "github.com/DataDog/datadog-cdk-constructs-go/v2/ddcdkconstruct/v2/v2/jsii"
 
 	"github.com/aws/aws-cdk-go/awscdk/v2/awslogs"
 	"github.com/aws/constructs-go/constructs/v10"
-	"github.com/DataDog/datadog-cdk-constructs-go/v2/ddcdkconstruct/v2/internal"
+	"github.com/DataDog/datadog-cdk-constructs-go/v2/ddcdkconstruct/v2/v2/internal"
 )
 
 type DatadogLambda interface {

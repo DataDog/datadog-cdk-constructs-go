@@ -1,4 +1,4 @@
-package ddcdkconstruct
+package ddcdkconstruct/v2
 
 import (
 	"github.com/aws/aws-cdk-go/awscdk/v2/awssecretsmanager"

@@ -1,5 +1,5 @@
 // CDK Construct Library to automatically instrument Python and Node Lambda functions with Datadog using AWS CDK v2
-package ddcdkconstruct
+package ddcdkconstruct/v2
 
 import (
 	"reflect"

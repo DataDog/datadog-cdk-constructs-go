@@ -1,4 +1,4 @@
-package ddcdkconstruct
+package ddcdkconstruct/v2
 
 
 type RuntimeType string
