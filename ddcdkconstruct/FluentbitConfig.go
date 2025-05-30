@@ -7,6 +7,8 @@ import (
 type FluentbitConfig struct {
 	// The minimum number of CPU units to reserve for the Datadog fluent-bit container.
 	Cpu *float64 `field:"optional" json:"cpu" yaml:"cpu"`
+	// Firelens options for the Fluentbit container.
+	FirelensOptions *DatadogFirelensOptions `field:"optional" json:"firelensOptions" yaml:"firelensOptions"`
 	// The version of the Fluentbit container image to use.
 	ImageVersion *string `field:"optional" json:"imageVersion" yaml:"imageVersion"`
 	// Enables the log router health check.

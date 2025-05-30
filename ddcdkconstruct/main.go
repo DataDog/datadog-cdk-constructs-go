@@ -97,6 +97,10 @@ func init() {
 		"datadog-cdk-constructs-v2.DatadogECSLogDriverProps",
 		reflect.TypeOf((*DatadogECSLogDriverProps)(nil)).Elem(),
 	)
+	_jsii_.RegisterStruct(
+		"datadog-cdk-constructs-v2.DatadogFirelensOptions",
+		reflect.TypeOf((*DatadogFirelensOptions)(nil)).Elem(),
+	)
 	_jsii_.RegisterClass(
 		"datadog-cdk-constructs-v2.DatadogLambda",
 		reflect.TypeOf((*DatadogLambda)(nil)).Elem(),

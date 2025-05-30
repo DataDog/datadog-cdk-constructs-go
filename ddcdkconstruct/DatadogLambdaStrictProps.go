@@ -6,6 +6,7 @@ import (
 
 type DatadogLambdaStrictProps struct {
 	AddLayers *bool `field:"required" json:"addLayers" yaml:"addLayers"`
+	CaptureCloudServicePayload *bool `field:"required" json:"captureCloudServicePayload" yaml:"captureCloudServicePayload"`
 	CaptureLambdaPayload *bool `field:"required" json:"captureLambdaPayload" yaml:"captureLambdaPayload"`
 	EnableDatadogASM *bool `field:"required" json:"enableDatadogASM" yaml:"enableDatadogASM"`
 	EnableDatadogLogs *bool `field:"required" json:"enableDatadogLogs" yaml:"enableDatadogLogs"`

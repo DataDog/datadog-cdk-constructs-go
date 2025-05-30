@@ -11,6 +11,7 @@ type DatadogLambdaProps struct {
 	ApiKeySecretArn *string `field:"optional" json:"apiKeySecretArn" yaml:"apiKeySecretArn"`
 	ApiKmsKey *string `field:"optional" json:"apiKmsKey" yaml:"apiKmsKey"`
 	ApmFlushDeadline interface{} `field:"optional" json:"apmFlushDeadline" yaml:"apmFlushDeadline"`
+	CaptureCloudServicePayload *bool `field:"optional" json:"captureCloudServicePayload" yaml:"captureCloudServicePayload"`
 	CaptureLambdaPayload *bool `field:"optional" json:"captureLambdaPayload" yaml:"captureLambdaPayload"`
 	ColdStartTraceSkipLibs *string `field:"optional" json:"coldStartTraceSkipLibs" yaml:"coldStartTraceSkipLibs"`
 	CreateForwarderPermissions *bool `field:"optional" json:"createForwarderPermissions" yaml:"createForwarderPermissions"`
