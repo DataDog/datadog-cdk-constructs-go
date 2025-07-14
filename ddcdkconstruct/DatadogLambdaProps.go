@@ -34,6 +34,9 @@ type DatadogLambdaProps struct {
 	InjectLogContext *bool `field:"optional" json:"injectLogContext" yaml:"injectLogContext"`
 	JavaLayerArn *string `field:"optional" json:"javaLayerArn" yaml:"javaLayerArn"`
 	JavaLayerVersion *float64 `field:"optional" json:"javaLayerVersion" yaml:"javaLayerVersion"`
+	LlmObsAgentlessEnabled *bool `field:"optional" json:"llmObsAgentlessEnabled" yaml:"llmObsAgentlessEnabled"`
+	LlmObsEnabled *bool `field:"optional" json:"llmObsEnabled" yaml:"llmObsEnabled"`
+	LlmObsMlApp *string `field:"optional" json:"llmObsMlApp" yaml:"llmObsMlApp"`
 	LogLevel *string `field:"optional" json:"logLevel" yaml:"logLevel"`
 	MinColdStartTraceDuration *float64 `field:"optional" json:"minColdStartTraceDuration" yaml:"minColdStartTraceDuration"`
 	NodeLayerArn *string `field:"optional" json:"nodeLayerArn" yaml:"nodeLayerArn"`
