@@ -262,8 +262,6 @@ To further configure your DatadogLambda construct for Lambda, use the following 
 | `llmObsMlApp`      | `llm_obs_ml_app`      | The name of your LLM application, service, or project, under which all traces and spans are grouped. This helps distinguish between different applications or experiments. See [Application naming guidelines](https://docs.datadoghq.com/llm_observability/sdk/?tab=nodejs#application-naming-guidelines) for allowed characters and other constraints. To override this value for a given root span, see [Tracing multiple applications](https://docs.datadoghq.com/llm_observability/sdk/?tab=nodejs#tracing-multiple-applications).  Required if `llmObsEnabled` is `true` |
 | `llmObsAgentlessEnabled`      | `llm_obs_agentless_enabled`      | Only required if you are not using the Datadog Lambda Extension, in which case this should be set to `true`.  Defaults to `false`. |
 
-**Note**: Using the parameters above may override corresponding function level `DD_XXX` environment variables.
-
 #### Tracing
 
 Enable X-Ray Tracing on your Lambda functions. For more information, see [CDK documentation](https://docs.aws.amazon.com/cdk/api/latest/docs/@aws-cdk_aws-lambda.Tracing.html).

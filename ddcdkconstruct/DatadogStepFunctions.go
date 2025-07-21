@@ -2,12 +2,12 @@ package ddcdkconstruct
 
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
-	_init_ "github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v2/jsii"
+	_init_ "github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v3/jsii"
 
 	"github.com/aws/aws-cdk-go/awscdk/v2"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awsstepfunctions"
 	"github.com/aws/constructs-go/constructs/v10"
-	"github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v2/internal"
+	"github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v3/internal"
 )
 
 type DatadogStepFunctions interface {
