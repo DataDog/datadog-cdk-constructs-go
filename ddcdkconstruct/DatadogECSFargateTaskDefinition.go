@@ -18,6 +18,8 @@ type DatadogECSFargateTaskDefinition interface {
 	Compatibility() awsecs.Compatibility
 	// The container definitions.
 	Containers() *[]awsecs.ContainerDefinition
+	// The number of cpu units used by the task.
+	Cpu() *float64
 	CwsContainer() awsecs.ContainerDefinition
 	DatadogContainer() awsecs.ContainerDefinition
 	// Default container for this task.
@@ -53,6 +55,8 @@ type DatadogECSFargateTaskDefinition interface {
 	// Return true if the task definition can be run on a Fargate cluster.
 	IsFargateCompatible() *bool
 	LogContainer() awsecs.ContainerDefinition
+	// The amount (in MiB) of memory used by the task.
+	MemoryMiB() *float64
 	// The Docker networking mode to use for the containers in the task.
 	//
 	// Fargate tasks require the awsvpc network mode.
@@ -95,6 +99,7 @@ type DatadogECSFargateTaskDefinition interface {
 	// Adds a firelens log router to the task definition.
 	AddFirelensLogRouter(id *string, props *awsecs.FirelensLogRouterDefinitionOptions) awsecs.FirelensLogRouter
 	// Adds an inference accelerator to the task definition.
+	// Deprecated: ECS TaskDefinition's inferenceAccelerator is EOL since April 2024.
 	AddInferenceAccelerator(inferenceAccelerator *awsecs.InferenceAccelerator)
 	// Adds the specified placement constraint to the task definition.
 	AddPlacementConstraint(constraint awsecs.PlacementConstraint)
@@ -167,6 +172,16 @@ func (j *jsiiProxy_DatadogECSFargateTaskDefinition) Containers() *[]awsecs.Conta
 	_jsii_.Get(
 		j,
 		"containers",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_DatadogECSFargateTaskDefinition) Cpu() *float64 {
+	var returns *float64
+	_jsii_.Get(
+		j,
+		"cpu",
 		&returns,
 	)
 	return returns
@@ -287,6 +302,16 @@ func (j *jsiiProxy_DatadogECSFargateTaskDefinition) LogContainer() awsecs.Contai
 	_jsii_.Get(
 		j,
 		"logContainer",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_DatadogECSFargateTaskDefinition) MemoryMiB() *float64 {
+	var returns *float64
+	_jsii_.Get(
+		j,
+		"memoryMiB",
 		&returns,
 	)
 	return returns
@@ -543,6 +568,17 @@ func DatadogECSFargateTaskDefinition_IsResource(construct constructs.IConstruct)
 		&returns,
 	)
 
+	return returns
+}
+
+func DatadogECSFargateTaskDefinition_PROPERTY_INJECTION_ID() *string {
+	_init_.Initialize()
+	var returns *string
+	_jsii_.StaticGet(
+		"datadog-cdk-constructs-v2.DatadogECSFargateTaskDefinition",
+		"PROPERTY_INJECTION_ID",
+		&returns,
+	)
 	return returns
 }
 
