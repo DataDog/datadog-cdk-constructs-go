@@ -1,0 +1,12 @@
+# https://datadoghq.atlassian.net/wiki/spaces/SECENG/pages/5138645099/User+guide+dd-octo-sts
+issuer: https://gitlab.ddbuild.io
+subject: project_path:DataDog/datadog-cdk-constructs:*
+
+claim_pattern:
+  project_id: "1776"
+  ref: "main"
+  ref_type: "branch"
+  ref_protected: "true"
+
+permissions:
+  contents: write
