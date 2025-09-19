@@ -2,8 +2,6 @@
 issuer: https://gitlab.ddbuild.io
 subject_pattern: project_path:DataDog/datadog-cdk-constructs:.*
 
-claim_pattern:
-  project_id: "1776"
 
 permissions:
   contents: write
