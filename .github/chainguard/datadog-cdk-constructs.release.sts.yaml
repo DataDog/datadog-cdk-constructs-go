@@ -1,6 +1,6 @@
 # https://datadoghq.atlassian.net/wiki/spaces/SECENG/pages/5138645099/User+guide+dd-octo-sts
 issuer: https://gitlab.ddbuild.io
-subject_pattern: project_path:DataDog/datadog-cdk-constructs:*
+subject_pattern: project_path:DataDog/datadog-cdk-constructs:.*
 
 claim_pattern:
   project_id: "1776"
