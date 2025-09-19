@@ -4,9 +4,6 @@ subject_pattern: project_path:DataDog/datadog-cdk-constructs:.*
 
 claim_pattern:
   project_id: "1776"
-  ref: "main"
-  ref_type: "branch"
-  ref_protected: "true"
 
 permissions:
   contents: write
