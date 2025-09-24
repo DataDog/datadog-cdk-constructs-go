@@ -3,7 +3,7 @@ issuer: https://gitlab.ddbuild.io
 subject_pattern: project_path:DataDog/datadog-cdk-constructs:.*
 
 claim_pattern:
-  name: gitlab-runner-datadog-cdk-constructs
+  project_path: DataDog/datadog-cdk-constructs
 
 
 permissions:
