@@ -7,6 +7,10 @@ import (
 type FluentbitConfig struct {
 	// The minimum number of CPU units to reserve for the Datadog fluent-bit container.
 	Cpu *float64 `field:"optional" json:"cpu" yaml:"cpu"`
+	// Supply own FireLensLogDriver.
+	//
+	// Either this or logDriverConfig can be provided but not both.
+	FirelensLogDriver awsecs.FireLensLogDriver `field:"optional" json:"firelensLogDriver" yaml:"firelensLogDriver"`
 	// Firelens options for the Fluentbit container.
 	FirelensOptions *DatadogFirelensOptions `field:"optional" json:"firelensOptions" yaml:"firelensOptions"`
 	// The version of the Fluentbit container image to use.
