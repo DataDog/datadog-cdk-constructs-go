@@ -7,29 +7,5 @@ claim_pattern:
 
 
 permissions:
-  actions: write
-  actions_variables: read
-  administration: read
-  checks: write
   contents: write
-  deployments: write
-  discussions: write
-  environments: write
-  issues: write
-  members: read
-  merge_queues: read
-  metadata: read
-  organization_actions_variables: read
-  organization_administration: read
-  organization_events: read
-  organization_projects: write
-  packages: write
-  pages: read
-  pull_requests: write
-  repository_advisories: read
-  repository_projects: write
-  secret_scanning_alerts: read
-  security_events: write
-  statuses: write
-  vulnerability_alerts: read
   workflows: write
