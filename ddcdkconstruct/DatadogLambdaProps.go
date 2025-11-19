@@ -15,6 +15,7 @@ type DatadogLambdaProps struct {
 	CaptureLambdaPayload *bool `field:"optional" json:"captureLambdaPayload" yaml:"captureLambdaPayload"`
 	ColdStartTraceSkipLibs *string `field:"optional" json:"coldStartTraceSkipLibs" yaml:"coldStartTraceSkipLibs"`
 	CreateForwarderPermissions *bool `field:"optional" json:"createForwarderPermissions" yaml:"createForwarderPermissions"`
+	DatadogAppSecMode DatadogAppSecMode `field:"optional" json:"datadogAppSecMode" yaml:"datadogAppSecMode"`
 	DecodeAuthorizerContext *bool `field:"optional" json:"decodeAuthorizerContext" yaml:"decodeAuthorizerContext"`
 	DotnetLayerArn *string `field:"optional" json:"dotnetLayerArn" yaml:"dotnetLayerArn"`
 	DotnetLayerVersion *float64 `field:"optional" json:"dotnetLayerVersion" yaml:"dotnetLayerVersion"`

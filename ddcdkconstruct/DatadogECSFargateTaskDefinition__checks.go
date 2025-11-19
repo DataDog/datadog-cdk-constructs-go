@@ -13,15 +13,15 @@ import (
 	"github.com/aws/constructs-go/constructs/v10"
 )
 
-func (d *jsiiProxy_DatadogECSFargateTaskDefinition) validateAddContainerParameters(id *string, containerProps *awsecs.ContainerDefinitionOptions) error {
+func (d *jsiiProxy_DatadogECSFargateTaskDefinition) validateAddContainerParameters(id *string, props *awsecs.ContainerDefinitionOptions) error {
 	if id == nil {
 		return fmt.Errorf("parameter id is required, but nil was provided")
 	}
 
-	if containerProps == nil {
-		return fmt.Errorf("parameter containerProps is required, but nil was provided")
+	if props == nil {
+		return fmt.Errorf("parameter props is required, but nil was provided")
 	}
-	if err := _jsii_.ValidateStruct(containerProps, func() string { return "parameter containerProps" }); err != nil {
+	if err := _jsii_.ValidateStruct(props, func() string { return "parameter props" }); err != nil {
 		return err
 	}
 

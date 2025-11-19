@@ -90,7 +90,7 @@ type DatadogECSFargateTaskDefinition interface {
 	// Adds a new container to the task definition.
 	//
 	// Modifies properties of container to support specified agent configuration in task.
-	AddContainer(id *string, containerProps *awsecs.ContainerDefinitionOptions) awsecs.ContainerDefinition
+	AddContainer(id *string, props *awsecs.ContainerDefinitionOptions) awsecs.ContainerDefinition
 	// Adds the specified extension to the task definition.
 	//
 	// Extension can be used to apply a packaged modification to
@@ -582,8 +582,8 @@ func DatadogECSFargateTaskDefinition_PROPERTY_INJECTION_ID() *string {
 	return returns
 }
 
-func (d *jsiiProxy_DatadogECSFargateTaskDefinition) AddContainer(id *string, containerProps *awsecs.ContainerDefinitionOptions) awsecs.ContainerDefinition {
-	if err := d.validateAddContainerParameters(id, containerProps); err != nil {
+func (d *jsiiProxy_DatadogECSFargateTaskDefinition) AddContainer(id *string, props *awsecs.ContainerDefinitionOptions) awsecs.ContainerDefinition {
+	if err := d.validateAddContainerParameters(id, props); err != nil {
 		panic(err)
 	}
 	var returns awsecs.ContainerDefinition
@@ -591,7 +591,7 @@ func (d *jsiiProxy_DatadogECSFargateTaskDefinition) AddContainer(id *string, con
 	_jsii_.Invoke(
 		d,
 		"addContainer",
-		[]interface{}{id, containerProps},
+		[]interface{}{id, props},
 		&returns,
 	)
 
