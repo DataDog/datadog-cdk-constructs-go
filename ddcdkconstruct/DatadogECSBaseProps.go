@@ -48,6 +48,8 @@ type DatadogECSBaseProps struct {
 	IsDatadogEssential *bool `field:"optional" json:"isDatadogEssential" yaml:"isDatadogEssential"`
 	// The amount (in MiB) of memory to present to the Datadog Agent container.
 	MemoryLimitMiB *float64 `field:"optional" json:"memoryLimitMiB" yaml:"memoryLimitMiB"`
+	// Configure Datadog Agent container to run with read-only root filesystem enabled.
+	ReadOnlyRootFilesystem *bool `field:"optional" json:"readOnlyRootFilesystem" yaml:"readOnlyRootFilesystem"`
 	// The registry to pull the Datadog Agent container image from.
 	Registry *string `field:"optional" json:"registry" yaml:"registry"`
 	// The task service name.
