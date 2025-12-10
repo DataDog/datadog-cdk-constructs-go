@@ -25,6 +25,16 @@ func init() {
 			"HIGH": Cardinality_HIGH,
 		},
 	)
+	_jsii_.RegisterEnum(
+		"datadog-cdk-constructs-v2.DatadogAppSecMode",
+		reflect.TypeOf((*DatadogAppSecMode)(nil)).Elem(),
+		map[string]interface{}{
+			"OFF": DatadogAppSecMode_OFF,
+			"ON": DatadogAppSecMode_ON,
+			"EXTENSION": DatadogAppSecMode_EXTENSION,
+			"TRACER": DatadogAppSecMode_TRACER,
+		},
+	)
 	_jsii_.RegisterStruct(
 		"datadog-cdk-constructs-v2.DatadogECSBaseProps",
 		reflect.TypeOf((*DatadogECSBaseProps)(nil)).Elem(),
@@ -76,6 +86,7 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "isEc2Compatible", GoGetter: "IsEc2Compatible"},
 			_jsii_.MemberProperty{JsiiProperty: "isExternalCompatible", GoGetter: "IsExternalCompatible"},
 			_jsii_.MemberProperty{JsiiProperty: "isFargateCompatible", GoGetter: "IsFargateCompatible"},
+			_jsii_.MemberProperty{JsiiProperty: "isManagedInstancesCompatible", GoGetter: "IsManagedInstancesCompatible"},
 			_jsii_.MemberProperty{JsiiProperty: "logContainer", GoGetter: "LogContainer"},
 			_jsii_.MemberProperty{JsiiProperty: "memoryMiB", GoGetter: "MemoryMiB"},
 			_jsii_.MemberProperty{JsiiProperty: "networkMode", GoGetter: "NetworkMode"},

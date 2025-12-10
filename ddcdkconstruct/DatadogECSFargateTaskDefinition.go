@@ -31,12 +31,13 @@ type DatadogECSFargateTaskDefinition interface {
 	SetDefaultContainer(val awsecs.ContainerDefinition)
 	// The environment this resource belongs to.
 	//
-	// For resources that are created and managed by the CDK
-	// (generally, those created by creating new class instances like Role, Bucket, etc.),
-	// this is always the same as the environment of the stack they belong to;
-	// however, for imported resources
-	// (those obtained from static methods like fromRoleArn, fromBucketName, etc.),
-	// that might be different than the stack they were imported into.
+	// For resources that are created and managed in a Stack (those created by
+	// creating new class instances like `new Role()`, `new Bucket()`, etc.), this
+	// is always the same as the environment of the stack they belong to.
+	//
+	// For referenced resources (those obtained from referencing methods like
+	// `Role.fromRoleArn()`, `Bucket.fromBucketName()`, etc.), they might be
+	// different than the stack they were imported into.
 	Env() *awscdk.ResourceEnvironment
 	// The amount (in GiB) of ephemeral storage to be allocated to the task.
 	EphemeralStorageGiB() *float64
@@ -54,6 +55,8 @@ type DatadogECSFargateTaskDefinition interface {
 	IsExternalCompatible() *bool
 	// Return true if the task definition can be run on a Fargate cluster.
 	IsFargateCompatible() *bool
+	// Return true if the task definition can be run on Managed Instances.
+	IsManagedInstancesCompatible() *bool
 	LogContainer() awsecs.ContainerDefinition
 	// The amount (in MiB) of memory used by the task.
 	MemoryMiB() *float64
@@ -90,7 +93,7 @@ type DatadogECSFargateTaskDefinition interface {
 	// Adds a new container to the task definition.
 	//
 	// Modifies properties of container to support specified agent configuration in task.
-	AddContainer(id *string, containerProps *awsecs.ContainerDefinitionOptions) awsecs.ContainerDefinition
+	AddContainer(id *string, props *awsecs.ContainerDefinitionOptions) awsecs.ContainerDefinition
 	// Adds the specified extension to the task definition.
 	//
 	// Extension can be used to apply a packaged modification to
@@ -292,6 +295,16 @@ func (j *jsiiProxy_DatadogECSFargateTaskDefinition) IsFargateCompatible() *bool 
 	_jsii_.Get(
 		j,
 		"isFargateCompatible",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_DatadogECSFargateTaskDefinition) IsManagedInstancesCompatible() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"isManagedInstancesCompatible",
 		&returns,
 	)
 	return returns
@@ -582,8 +595,8 @@ func DatadogECSFargateTaskDefinition_PROPERTY_INJECTION_ID() *string {
 	return returns
 }
 
-func (d *jsiiProxy_DatadogECSFargateTaskDefinition) AddContainer(id *string, containerProps *awsecs.ContainerDefinitionOptions) awsecs.ContainerDefinition {
-	if err := d.validateAddContainerParameters(id, containerProps); err != nil {
+func (d *jsiiProxy_DatadogECSFargateTaskDefinition) AddContainer(id *string, props *awsecs.ContainerDefinitionOptions) awsecs.ContainerDefinition {
+	if err := d.validateAddContainerParameters(id, props); err != nil {
 		panic(err)
 	}
 	var returns awsecs.ContainerDefinition
@@ -591,7 +604,7 @@ func (d *jsiiProxy_DatadogECSFargateTaskDefinition) AddContainer(id *string, con
 	_jsii_.Invoke(
 		d,
 		"addContainer",
-		[]interface{}{id, containerProps},
+		[]interface{}{id, props},
 		&returns,
 	)
 

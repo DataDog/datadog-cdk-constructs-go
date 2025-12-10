@@ -4,7 +4,7 @@ package ddcdkconstruct
 
 // Building without runtime type checking enabled, so all the below just return nil
 
-func (d *jsiiProxy_DatadogECSFargateTaskDefinition) validateAddContainerParameters(id *string, containerProps *awsecs.ContainerDefinitionOptions) error {
+func (d *jsiiProxy_DatadogECSFargateTaskDefinition) validateAddContainerParameters(id *string, props *awsecs.ContainerDefinitionOptions) error {
 	return nil
 }
 

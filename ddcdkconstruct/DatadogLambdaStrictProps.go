@@ -8,7 +8,7 @@ type DatadogLambdaStrictProps struct {
 	AddLayers *bool `field:"required" json:"addLayers" yaml:"addLayers"`
 	CaptureCloudServicePayload *bool `field:"required" json:"captureCloudServicePayload" yaml:"captureCloudServicePayload"`
 	CaptureLambdaPayload *bool `field:"required" json:"captureLambdaPayload" yaml:"captureLambdaPayload"`
-	EnableDatadogASM *bool `field:"required" json:"enableDatadogASM" yaml:"enableDatadogASM"`
+	DatadogAppSecMode DatadogAppSecMode `field:"required" json:"datadogAppSecMode" yaml:"datadogAppSecMode"`
 	EnableDatadogLogs *bool `field:"required" json:"enableDatadogLogs" yaml:"enableDatadogLogs"`
 	EnableDatadogTracing *bool `field:"required" json:"enableDatadogTracing" yaml:"enableDatadogTracing"`
 	EnableMergeXrayTraces *bool `field:"required" json:"enableMergeXrayTraces" yaml:"enableMergeXrayTraces"`
