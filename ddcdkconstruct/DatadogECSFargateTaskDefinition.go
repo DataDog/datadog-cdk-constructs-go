@@ -54,6 +54,8 @@ type DatadogECSFargateTaskDefinition interface {
 	IsExternalCompatible() *bool
 	// Return true if the task definition can be run on a Fargate cluster.
 	IsFargateCompatible() *bool
+	// Return true if the task definition can be run on Managed Instances.
+	IsManagedInstancesCompatible() *bool
 	LogContainer() awsecs.ContainerDefinition
 	// The amount (in MiB) of memory used by the task.
 	MemoryMiB() *float64
@@ -292,6 +294,16 @@ func (j *jsiiProxy_DatadogECSFargateTaskDefinition) IsFargateCompatible() *bool 
 	_jsii_.Get(
 		j,
 		"isFargateCompatible",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_DatadogECSFargateTaskDefinition) IsManagedInstancesCompatible() *bool {
+	var returns *bool
+	_jsii_.Get(
+		j,
+		"isManagedInstancesCompatible",
 		&returns,
 	)
 	return returns
