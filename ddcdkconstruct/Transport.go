@@ -12,6 +12,8 @@ type Transport interface {
 	SetApiKey(val *string)
 	ApiKeySecretArn() *string
 	SetApiKeySecretArn(val *string)
+	ApiKeySsmArn() *string
+	SetApiKeySsmArn(val *string)
 	ApiKmsKey() *string
 	SetApiKmsKey(val *string)
 	ExtensionLayerArn() *string
@@ -45,6 +47,16 @@ func (j *jsiiProxy_Transport) ApiKeySecretArn() *string {
 	_jsii_.Get(
 		j,
 		"apiKeySecretArn",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_Transport) ApiKeySsmArn() *string {
+	var returns *string
+	_jsii_.Get(
+		j,
+		"apiKeySsmArn",
 		&returns,
 	)
 	return returns
@@ -101,26 +113,26 @@ func (j *jsiiProxy_Transport) Site() *string {
 }
 
 
-func NewTransport(flushMetricsToLogs *bool, site *string, apiKey *string, apiKeySecretArn *string, apiKmsKey *string, extensionLayerVersion *float64, extensionLayerArn *string) Transport {
+func NewTransport(flushMetricsToLogs *bool, site *string, apiKey *string, apiKeySecretArn *string, apiKeySsmArn *string, apiKmsKey *string, extensionLayerVersion *float64, extensionLayerArn *string) Transport {
 	_init_.Initialize()
 
 	j := jsiiProxy_Transport{}
 
 	_jsii_.Create(
 		"datadog-cdk-constructs-v2.Transport",
-		[]interface{}{flushMetricsToLogs, site, apiKey, apiKeySecretArn, apiKmsKey, extensionLayerVersion, extensionLayerArn},
+		[]interface{}{flushMetricsToLogs, site, apiKey, apiKeySecretArn, apiKeySsmArn, apiKmsKey, extensionLayerVersion, extensionLayerArn},
 		&j,
 	)
 
 	return &j
 }
 
-func NewTransport_Override(t Transport, flushMetricsToLogs *bool, site *string, apiKey *string, apiKeySecretArn *string, apiKmsKey *string, extensionLayerVersion *float64, extensionLayerArn *string) {
+func NewTransport_Override(t Transport, flushMetricsToLogs *bool, site *string, apiKey *string, apiKeySecretArn *string, apiKeySsmArn *string, apiKmsKey *string, extensionLayerVersion *float64, extensionLayerArn *string) {
 	_init_.Initialize()
 
 	_jsii_.Create(
 		"datadog-cdk-constructs-v2.Transport",
-		[]interface{}{flushMetricsToLogs, site, apiKey, apiKeySecretArn, apiKmsKey, extensionLayerVersion, extensionLayerArn},
+		[]interface{}{flushMetricsToLogs, site, apiKey, apiKeySecretArn, apiKeySsmArn, apiKmsKey, extensionLayerVersion, extensionLayerArn},
 		t,
 	)
 }
@@ -137,6 +149,14 @@ func (j *jsiiProxy_Transport)SetApiKeySecretArn(val *string) {
 	_jsii_.Set(
 		j,
 		"apiKeySecretArn",
+		val,
+	)
+}
+
+func (j *jsiiProxy_Transport)SetApiKeySsmArn(val *string) {
+	_jsii_.Set(
+		j,
+		"apiKeySsmArn",
 		val,
 	)
 }

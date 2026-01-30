@@ -232,6 +232,7 @@ func init() {
 		[]_jsii_.Member{
 			_jsii_.MemberProperty{JsiiProperty: "apiKey", GoGetter: "ApiKey"},
 			_jsii_.MemberProperty{JsiiProperty: "apiKeySecretArn", GoGetter: "ApiKeySecretArn"},
+			_jsii_.MemberProperty{JsiiProperty: "apiKeySsmArn", GoGetter: "ApiKeySsmArn"},
 			_jsii_.MemberProperty{JsiiProperty: "apiKmsKey", GoGetter: "ApiKmsKey"},
 			_jsii_.MemberMethod{JsiiMethod: "applyEnvVars", GoMethod: "ApplyEnvVars"},
 			_jsii_.MemberProperty{JsiiProperty: "extensionLayerArn", GoGetter: "ExtensionLayerArn"},

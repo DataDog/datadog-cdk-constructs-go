@@ -17,6 +17,7 @@ type DatadogLambdaStrictProps struct {
 	ApiKey *string `field:"optional" json:"apiKey" yaml:"apiKey"`
 	ApiKeySecret awssecretsmanager.ISecret `field:"optional" json:"apiKeySecret" yaml:"apiKeySecret"`
 	ApiKeySecretArn *string `field:"optional" json:"apiKeySecretArn" yaml:"apiKeySecretArn"`
+	ApiKeySsmArn *string `field:"optional" json:"apiKeySsmArn" yaml:"apiKeySsmArn"`
 	ApiKmsKey *string `field:"optional" json:"apiKmsKey" yaml:"apiKmsKey"`
 	ExtensionLayerArn *string `field:"optional" json:"extensionLayerArn" yaml:"extensionLayerArn"`
 	ExtensionLayerVersion *float64 `field:"optional" json:"extensionLayerVersion" yaml:"extensionLayerVersion"`
