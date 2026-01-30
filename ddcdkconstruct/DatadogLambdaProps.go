@@ -9,6 +9,7 @@ type DatadogLambdaProps struct {
 	ApiKey *string `field:"optional" json:"apiKey" yaml:"apiKey"`
 	ApiKeySecret awssecretsmanager.ISecret `field:"optional" json:"apiKeySecret" yaml:"apiKeySecret"`
 	ApiKeySecretArn *string `field:"optional" json:"apiKeySecretArn" yaml:"apiKeySecretArn"`
+	ApiKeySsmArn *string `field:"optional" json:"apiKeySsmArn" yaml:"apiKeySsmArn"`
 	ApiKmsKey *string `field:"optional" json:"apiKmsKey" yaml:"apiKmsKey"`
 	ApmFlushDeadline interface{} `field:"optional" json:"apmFlushDeadline" yaml:"apmFlushDeadline"`
 	CaptureCloudServicePayload *bool `field:"optional" json:"captureCloudServicePayload" yaml:"captureCloudServicePayload"`

@@ -18,6 +18,10 @@ type DatadogECSFargateProps struct {
 	//
 	// Must define at least 1 source for the API key.
 	ApiKeySecretArn *string `field:"optional" json:"apiKeySecretArn" yaml:"apiKeySecretArn"`
+	// The ARN of the Datadog API key in SSM Parameter Store.
+	//
+	// Must define at least 1 source for the API key.
+	ApiKeySsmArn *string `field:"optional" json:"apiKeySsmArn" yaml:"apiKeySsmArn"`
 	// APM feature configuration.
 	Apm *APMFeatureConfig `field:"optional" json:"apm" yaml:"apm"`
 	// The Datadog Agent checks tag cardinality.
