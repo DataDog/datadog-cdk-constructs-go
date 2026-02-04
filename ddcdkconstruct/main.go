@@ -199,6 +199,10 @@ func init() {
 		reflect.TypeOf((*Node)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"datadog-cdk-constructs-v2.OrchestratorExplorerFeatureConfig",
+		reflect.TypeOf((*OrchestratorExplorerFeatureConfig)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"datadog-cdk-constructs-v2.Runtime",
 		reflect.TypeOf((*Runtime)(nil)).Elem(),
 	)
