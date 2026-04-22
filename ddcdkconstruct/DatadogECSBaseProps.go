@@ -18,6 +18,10 @@ type DatadogECSBaseProps struct {
 	//
 	// Must define at least 1 source for the API key.
 	ApiKeySecretArn *string `field:"optional" json:"apiKeySecretArn" yaml:"apiKeySecretArn"`
+	// The JSON field to read from the Datadog API key secret in Secrets Manager.
+	//
+	// Applies to `apiKeySecret` and `apiKeySecretArn`.
+	ApiKeySecretField *string `field:"optional" json:"apiKeySecretField" yaml:"apiKeySecretField"`
 	// The ARN of the Datadog API key in SSM Parameter Store.
 	//
 	// Must define at least 1 source for the API key.
