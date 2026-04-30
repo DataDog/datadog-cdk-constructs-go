@@ -2,6 +2,8 @@ module github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v3
 
 go 1.25
 
+toolchain go1.26.2
+
 require (
 	github.com/aws/jsii-runtime-go v1.128.0
 	github.com/aws/aws-cdk-go/awscdk/v2 v2.245.0
