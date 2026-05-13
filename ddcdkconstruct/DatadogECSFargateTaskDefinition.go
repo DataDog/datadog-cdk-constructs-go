@@ -2,7 +2,7 @@ package ddcdkconstruct
 
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
-	_init_ "github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v3/jsii"
+	_init_ "github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v4/jsii"
 
 	"github.com/aws/aws-cdk-go/awscdk/v2"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awsecs"
@@ -10,7 +10,7 @@ import (
 	"github.com/aws/aws-cdk-go/awscdk/v2/interfaces"
 	"github.com/aws/aws-cdk-go/awscdk/v2/interfaces/interfacesawsecs"
 	"github.com/aws/constructs-go/constructs/v10"
-	"github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v3/internal"
+	"github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v4/internal"
 )
 
 // The Datadog ECS Fargate Task Definition automatically instruments the ECS Fargate task and containers with configured Datadog features.
