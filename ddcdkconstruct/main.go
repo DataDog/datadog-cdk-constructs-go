@@ -35,6 +35,14 @@ func init() {
 			"TRACER": DatadogAppSecMode_TRACER,
 		},
 	)
+	_jsii_.RegisterClass(
+		"datadog-cdk-constructs-v2.DatadogDefaultLayerVersions",
+		reflect.TypeOf((*DatadogDefaultLayerVersions)(nil)).Elem(),
+		nil, // no members
+		func() interface{} {
+			return &jsiiProxy_DatadogDefaultLayerVersions{}
+		},
+	)
 	_jsii_.RegisterStruct(
 		"datadog-cdk-constructs-v2.DatadogECSBaseProps",
 		reflect.TypeOf((*DatadogECSBaseProps)(nil)).Elem(),
