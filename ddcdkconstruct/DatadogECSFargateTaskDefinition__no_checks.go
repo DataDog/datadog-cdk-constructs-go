@@ -36,6 +36,10 @@ func (d *jsiiProxy_DatadogECSFargateTaskDefinition) validateAddVolumeParameters(
 	return nil
 }
 
+func (d *jsiiProxy_DatadogECSFargateTaskDefinition) validateApplyCrossStackReferenceStrengthParameters(strength awscdk.ReferenceStrength) error {
+	return nil
+}
+
 func (d *jsiiProxy_DatadogECSFargateTaskDefinition) validateApplyRemovalPolicyParameters(policy awscdk.RemovalPolicy) error {
 	return nil
 }

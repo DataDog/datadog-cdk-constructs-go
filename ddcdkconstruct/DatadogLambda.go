@@ -2,11 +2,11 @@ package ddcdkconstruct
 
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
-	_init_ "github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v4/jsii"
+	_init_ "github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v5/jsii"
 
 	"github.com/aws/aws-cdk-go/awscdk/v2/awslogs"
 	"github.com/aws/constructs-go/constructs/v10"
-	"github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v4/internal"
+	"github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v5/internal"
 )
 
 type DatadogLambda interface {
@@ -31,6 +31,18 @@ type DatadogLambda interface {
 	AddGitCommitMetadata(lambdaFunctions *[]interface{}, gitCommitSha *string, gitRepoUrl *string)
 	AddLambdaFunctions(lambdaFunctions *[]interface{}, construct constructs.Construct)
 	OverrideGitMetadata(gitCommitSha *string, gitRepoUrl *string)
+	// Pre-set a Datadog environment variable on `lambdaFunction`. Call before `addLambdaFunctions([lambdaFunction])`.
+	//
+	// Precedence, highest first:
+	//   1. `func.addEnvironment()` called after `addLambdaFunctions()`.
+	//   2. `DatadogLambdaProps` fields dedicated to `key` (for example, `env` for `DD_ENV`).
+	//   3. This method.
+	//   4. Construct defaults (for example, `enableDatadogTracing` for `DD_TRACE_ENABLED`).
+	//
+	// `addLambdaFunctions` merges `DD_TAGS` from `DatadogLambdaProps.tags`, per-function
+	// tags from this method, and git tags from source code integration, in that order.
+	// On duplicate tag keys, the later source wins.
+	SetEnvironment(lambdaFunction interface{}, key *string, value *string)
 	// Returns a string representation of this construct.
 	ToString() *string
 	// Applies one or more mixins to this construct.
@@ -304,6 +316,17 @@ func (d *jsiiProxy_DatadogLambda) OverrideGitMetadata(gitCommitSha *string, gitR
 		d,
 		"overrideGitMetadata",
 		[]interface{}{gitCommitSha, gitRepoUrl},
+	)
+}
+
+func (d *jsiiProxy_DatadogLambda) SetEnvironment(lambdaFunction interface{}, key *string, value *string) {
+	if err := d.validateSetEnvironmentParameters(lambdaFunction, key, value); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		d,
+		"setEnvironment",
+		[]interface{}{lambdaFunction, key, value},
 	)
 }
 

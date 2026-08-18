@@ -2,7 +2,7 @@ package ddcdkconstruct
 
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
-	_init_ "github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v4/jsii"
+	_init_ "github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v5/jsii"
 
 	"github.com/aws/aws-cdk-go/awscdk/v2"
 	"github.com/aws/aws-cdk-go/awscdk/v2/awsecs"
@@ -10,7 +10,7 @@ import (
 	"github.com/aws/aws-cdk-go/awscdk/v2/interfaces"
 	"github.com/aws/aws-cdk-go/awscdk/v2/interfaces/interfacesawsecs"
 	"github.com/aws/constructs-go/constructs/v10"
-	"github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v4/internal"
+	"github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v5/internal"
 )
 
 // The Datadog ECS Fargate Task Definition automatically instruments the ECS Fargate task and containers with configured Datadog features.
@@ -116,6 +116,14 @@ type DatadogECSFargateTaskDefinition interface {
 	AddToTaskRolePolicy(statement awsiam.PolicyStatement)
 	// Adds a volume to the task definition.
 	AddVolume(volume *awsecs.Volume)
+	// Override the cross-stack reference strength for this resource.
+	//
+	// When set, any cross-stack reference to this resource will use the specified
+	// mechanism instead of the global default determined by the
+	// `@aws-cdk/core:defaultCrossStackReferences` context key. This is useful for
+	// selectively weakening specific references to avoid the "deadly embrace" problem
+	// without changing the app-wide default.
+	ApplyCrossStackReferenceStrength(strength awscdk.ReferenceStrength)
 	// Apply the given removal policy to this resource.
 	//
 	// The Removal Policy controls what happens to this resource when it stops
@@ -726,6 +734,17 @@ func (d *jsiiProxy_DatadogECSFargateTaskDefinition) AddVolume(volume *awsecs.Vol
 		d,
 		"addVolume",
 		[]interface{}{volume},
+	)
+}
+
+func (d *jsiiProxy_DatadogECSFargateTaskDefinition) ApplyCrossStackReferenceStrength(strength awscdk.ReferenceStrength) {
+	if err := d.validateApplyCrossStackReferenceStrengthParameters(strength); err != nil {
+		panic(err)
+	}
+	_jsii_.InvokeVoid(
+		d,
+		"applyCrossStackReferenceStrength",
+		[]interface{}{strength},
 	)
 }
 
