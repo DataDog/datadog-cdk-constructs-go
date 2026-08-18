@@ -68,6 +68,32 @@ func (d *jsiiProxy_DatadogLambda) validateOverrideGitMetadataParameters(gitCommi
 	return nil
 }
 
+func (d *jsiiProxy_DatadogLambda) validateSetEnvironmentParameters(lambdaFunction interface{}, key *string, value *string) error {
+	if lambdaFunction == nil {
+		return fmt.Errorf("parameter lambdaFunction is required, but nil was provided")
+	}
+	switch lambdaFunction.(type) {
+	case awslambda.Function:
+		// ok
+	case awslambda.SingletonFunction:
+		// ok
+	default:
+		if !_jsii_.IsAnonymousProxy(lambdaFunction) {
+			return fmt.Errorf("parameter lambdaFunction must be one of the allowed types: awslambda.Function, awslambda.SingletonFunction; received %#v (a %T)", lambdaFunction, lambdaFunction)
+		}
+	}
+
+	if key == nil {
+		return fmt.Errorf("parameter key is required, but nil was provided")
+	}
+
+	if value == nil {
+		return fmt.Errorf("parameter value is required, but nil was provided")
+	}
+
+	return nil
+}
+
 func validateDatadogLambda_IsConstructParameters(x interface{}) error {
 	if x == nil {
 		return fmt.Errorf("parameter x is required, but nil was provided")

@@ -2,9 +2,7 @@ package ddcdkconstruct
 
 import (
 	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
-	_init_ "github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v4/jsii"
-
-	"github.com/aws/aws-cdk-go/awscdk/v2/awslambda"
+	_init_ "github.com/DataDog/datadog-cdk-constructs-go/ddcdkconstruct/v5/jsii"
 )
 
 type Transport interface {
@@ -24,7 +22,7 @@ type Transport interface {
 	SetFlushMetricsToLogs(val *bool)
 	Site() *string
 	SetSite(val *string)
-	ApplyEnvVars(lam awslambda.Function)
+	ApplyEnvVars(lam interface{})
 }
 
 // The jsii proxy struct for Transport
@@ -207,7 +205,7 @@ func (j *jsiiProxy_Transport)SetSite(val *string) {
 	)
 }
 
-func (t *jsiiProxy_Transport) ApplyEnvVars(lam awslambda.Function) {
+func (t *jsiiProxy_Transport) ApplyEnvVars(lam interface{}) {
 	if err := t.validateApplyEnvVarsParameters(lam); err != nil {
 		panic(err)
 	}

@@ -73,6 +73,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "addToExecutionRolePolicy", GoMethod: "AddToExecutionRolePolicy"},
 			_jsii_.MemberMethod{JsiiMethod: "addToTaskRolePolicy", GoMethod: "AddToTaskRolePolicy"},
 			_jsii_.MemberMethod{JsiiMethod: "addVolume", GoMethod: "AddVolume"},
+			_jsii_.MemberMethod{JsiiMethod: "applyCrossStackReferenceStrength", GoMethod: "ApplyCrossStackReferenceStrength"},
 			_jsii_.MemberMethod{JsiiMethod: "applyRemovalPolicy", GoMethod: "ApplyRemovalPolicy"},
 			_jsii_.MemberProperty{JsiiProperty: "compatibility", GoGetter: "Compatibility"},
 			_jsii_.MemberProperty{JsiiProperty: "containers", GoGetter: "Containers"},
@@ -139,6 +140,7 @@ func init() {
 			_jsii_.MemberMethod{JsiiMethod: "overrideGitMetadata", GoMethod: "OverrideGitMetadata"},
 			_jsii_.MemberProperty{JsiiProperty: "props", GoGetter: "Props"},
 			_jsii_.MemberProperty{JsiiProperty: "scope", GoGetter: "Scope"},
+			_jsii_.MemberMethod{JsiiMethod: "setEnvironment", GoMethod: "SetEnvironment"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
 			_jsii_.MemberProperty{JsiiProperty: "transport", GoGetter: "Transport"},
 			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
@@ -205,10 +207,6 @@ func init() {
 		map[string]interface{}{
 			"FLUENTBIT": LoggingType_FLUENTBIT,
 		},
-	)
-	_jsii_.RegisterStruct(
-		"datadog-cdk-constructs-v2.Node",
-		reflect.TypeOf((*Node)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"datadog-cdk-constructs-v2.OrchestratorExplorerFeatureConfig",

@@ -280,6 +280,61 @@ To further configure your DatadogLambda construct for Lambda, use the following 
 | `llmObsMlApp`                | `llm_obs_ml_app`                | The name of your LLM application, service, or project, under which all traces and spans are grouped. This helps distinguish between different applications or experiments. See [Application naming guidelines](https://docs.datadoghq.com/llm_observability/sdk/?tab=nodejs#application-naming-guidelines) for allowed characters and other constraints. To override this value for a given root span, see [Tracing multiple applications](https://docs.datadoghq.com/llm_observability/sdk/?tab=nodejs#tracing-multiple-applications).  Required if `llmObsEnabled` is `true` |
 | `llmObsAgentlessEnabled`     | `llm_obs_agentless_enabled`     | Only required if you are not using the Datadog Lambda Extension, in which case this should be set to `true`.  Defaults to `false`.                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
+#### Setting `DD_*` environment variables
+
+To configure Datadog variables for every instrumented function, set the matching field on `DatadogLambdaProps` (for example, `enableDatadogTracing`, `logLevel`, `env`, or `tags`).
+
+To override a value on a single function, use one of:
+
+* `datadogLambda.setEnvironment(func, key, value)` before `datadogLambda.addLambdaFunctions()`, to override a construct default while letting the construct finish instrumenting the function.
+* `func.addEnvironment(key, value)` after `datadogLambda.addLambdaFunctions()`, to override the value set during instrumentation.
+
+When more than one source sets the same key, the following order applies (highest precedence first):
+
+1. `func.addEnvironment(key, value)` called after `datadogLambda.addLambdaFunctions()`.
+2. `DatadogLambdaProps` fields dedicated to that key. These fields overwrite a value for the same key set through `datadogLambda.setEnvironment()`:
+
+   * Unified service tagging: `env`, `service`, `version`
+   * Cold-start tracing: `enableColdStartTracing`, `minColdStartTraceDuration`, `coldStartTraceSkipLibs`
+   * Other tracer settings: `enableProfiling`, `encodeAuthorizerContext`, `decodeAuthorizerContext`, `apmFlushDeadline`
+   * LLM Observability: `llmObsEnabled`, `llmObsMlApp`, `llmObsAgentlessEnabled`
+   * Transport: `site`, `apiKey`, `apiKeySecretArn`, `apiKeySsmArn`, `apiKmsKey`, `flushMetricsToLogs`
+3. `datadogLambda.setEnvironment(func, key, value)` called before `datadogLambda.addLambdaFunctions()`.
+4. Construct defaults, which apply only when nothing else set the key: `enableDatadogTracing`, `datadogAppSecMode`, `enableMergeXrayTraces`, `injectLogContext`, `enableDatadogLogs`, `captureLambdaPayload`, `captureCloudServicePayload`, `logLevel`
+
+`datadogLambda.addLambdaFunctions` merges the `DD_TAGS` environment variable from three sources, in order:
+
+1. `DatadogLambdaProps.tags`.
+2. Per-function tags from `datadogLambda.setEnvironment(func, 'DD_TAGS', ...)`.
+3. `git.commit.sha` and `git.repository_url` from source code integration.
+
+If the same tag key appears in more than one source, the later source wins.
+
+The following example shows these rules in practice:
+
+```go
+const myFunction = new lambda.Function(this, 'MyFunction', {
+  // ...
+});
+
+const datadogLambda = new DatadogLambda(this, 'DatadogLambda', {
+  // ...
+  tags: 'env:prod,team:platform',
+});
+
+datadogLambda.setEnvironment(myFunction, 'DD_TRACE_ENABLED', 'false');
+datadogLambda.setEnvironment(myFunction, 'DD_TAGS', 'service:worker,team:payments');
+datadogLambda.addLambdaFunctions([myFunction]);
+
+myFunction.addEnvironment('DD_LOG_LEVEL', 'debug');
+```
+
+Final values on `myFunction`:
+
+* `DD_TRACE_ENABLED=false`, from `datadogLambda.setEnvironment`, overriding the default.
+* `DD_LOG_LEVEL=debug`, from `myFunction.addEnvironment`, overriding the construct.
+* `DD_TAGS=env:prod,service:worker,team:payments,git.commit.sha:...,git.repository_url:...`. `team:payments` replaces `team:platform`, and source code integration appends the git tags.
+
 #### Default layer versions
 
 When you don't pass a `*LayerVersion` or `*LayerArn`, the construct uses a default layer version bundled with the package. These defaults track the latest released Datadog Lambda layers at the time the construct version was published, and are exposed via the `DatadogDefaultLayerVersions` class so you can reference them directly in any language:
@@ -693,7 +748,7 @@ const stateMachine = new sfn.StateMachine(stack, 'MyStateMachine', {
 
 ## Using Projen
 
-The Datadog CDK Construct Libraries use Projen to maintain project configuration files such as the `package.json`, `.gitignore`, `.npmignore`, etc. Most of the configuration files will be protected by Projen via read-only permissions. In order to change these files, edit the `.projenrc.js` file, then run `npx projen` to synthesize the new changes. Check out [Projen](https://github.com/projen/projen) for more details.
+The Datadog CDK Construct Libraries use Projen to maintain project configuration files such as the `package.json`, `.gitignore`, `.npmignore`, etc. Most of the configuration files will be protected by Projen via read-only permissions. In order to change these files, edit the `.projenrc.ts` file, then run `yarn projen` to synthesize the new changes. Check out [Projen](https://github.com/projen/projen) for more details.
 
 ## Migrating from v2-1.x.x to v2-2.x.x
 

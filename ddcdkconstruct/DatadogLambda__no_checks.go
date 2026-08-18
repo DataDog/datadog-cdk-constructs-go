@@ -20,6 +20,10 @@ func (d *jsiiProxy_DatadogLambda) validateOverrideGitMetadataParameters(gitCommi
 	return nil
 }
 
+func (d *jsiiProxy_DatadogLambda) validateSetEnvironmentParameters(lambdaFunction interface{}, key *string, value *string) error {
+	return nil
+}
+
 func validateDatadogLambda_IsConstructParameters(x interface{}) error {
 	return nil
 }

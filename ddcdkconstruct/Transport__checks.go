@@ -5,12 +5,24 @@ package ddcdkconstruct
 import (
 	"fmt"
 
+	_jsii_ "github.com/aws/jsii-runtime-go/runtime"
+
 	"github.com/aws/aws-cdk-go/awscdk/v2/awslambda"
 )
 
-func (t *jsiiProxy_Transport) validateApplyEnvVarsParameters(lam awslambda.Function) error {
+func (t *jsiiProxy_Transport) validateApplyEnvVarsParameters(lam interface{}) error {
 	if lam == nil {
 		return fmt.Errorf("parameter lam is required, but nil was provided")
+	}
+	switch lam.(type) {
+	case awslambda.Function:
+		// ok
+	case awslambda.SingletonFunction:
+		// ok
+	default:
+		if !_jsii_.IsAnonymousProxy(lam) {
+			return fmt.Errorf("parameter lam must be one of the allowed types: awslambda.Function, awslambda.SingletonFunction; received %#v (a %T)", lam, lam)
+		}
 	}
 
 	return nil
