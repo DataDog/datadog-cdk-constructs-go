@@ -13,6 +13,10 @@ func init() {
 		reflect.TypeOf((*APMFeatureConfig)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"datadog-cdk-constructs-v2.APMInstrumentationConfig",
+		reflect.TypeOf((*APMInstrumentationConfig)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"datadog-cdk-constructs-v2.CWSFeatureConfig",
 		reflect.TypeOf((*CWSFeatureConfig)(nil)).Elem(),
 	)
@@ -104,11 +108,13 @@ func init() {
 			_jsii_.MemberProperty{JsiiProperty: "physicalName", GoGetter: "PhysicalName"},
 			_jsii_.MemberProperty{JsiiProperty: "pidMode", GoGetter: "PidMode"},
 			_jsii_.MemberProperty{JsiiProperty: "referencesSecretJsonField", GoGetter: "ReferencesSecretJsonField"},
+			_jsii_.MemberProperty{JsiiProperty: "runtimePlatform", GoGetter: "RuntimePlatform"},
 			_jsii_.MemberProperty{JsiiProperty: "stack", GoGetter: "Stack"},
 			_jsii_.MemberProperty{JsiiProperty: "taskDefinitionArn", GoGetter: "TaskDefinitionArn"},
 			_jsii_.MemberProperty{JsiiProperty: "taskDefinitionRef", GoGetter: "TaskDefinitionRef"},
 			_jsii_.MemberProperty{JsiiProperty: "taskRole", GoGetter: "TaskRole"},
 			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberProperty{JsiiProperty: "tracerContainer", GoGetter: "TracerContainer"},
 			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
 		},
 		func() interface{} {
@@ -120,6 +126,43 @@ func init() {
 	_jsii_.RegisterStruct(
 		"datadog-cdk-constructs-v2.DatadogECSLogDriverProps",
 		reflect.TypeOf((*DatadogECSLogDriverProps)(nil)).Elem(),
+	)
+	_jsii_.RegisterClass(
+		"datadog-cdk-constructs-v2.DatadogECSManagedInstances",
+		reflect.TypeOf((*DatadogECSManagedInstances)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberMethod{JsiiMethod: "daemonTaskDefinition", GoMethod: "DaemonTaskDefinition"},
+		},
+		func() interface{} {
+			return &jsiiProxy_DatadogECSManagedInstances{}
+		},
+	)
+	_jsii_.RegisterClass(
+		"datadog-cdk-constructs-v2.DatadogECSManagedInstancesDaemonTaskDefinition",
+		reflect.TypeOf((*DatadogECSManagedInstancesDaemonTaskDefinition)(nil)).Elem(),
+		[]_jsii_.Member{
+			_jsii_.MemberProperty{JsiiProperty: "apmEnvironment", GoGetter: "ApmEnvironment"},
+			_jsii_.MemberProperty{JsiiProperty: "appDdSocketsMountPoint", GoGetter: "AppDdSocketsMountPoint"},
+			_jsii_.MemberProperty{JsiiProperty: "appDdSocketsVolume", GoGetter: "AppDdSocketsVolume"},
+			_jsii_.MemberProperty{JsiiProperty: "daemon", GoGetter: "Daemon"},
+			_jsii_.MemberProperty{JsiiProperty: "dataStreamsEnvironment", GoGetter: "DataStreamsEnvironment"},
+			_jsii_.MemberProperty{JsiiProperty: "dogstatsdEnvironment", GoGetter: "DogstatsdEnvironment"},
+			_jsii_.MemberProperty{JsiiProperty: "executionRole", GoGetter: "ExecutionRole"},
+			_jsii_.MemberProperty{JsiiProperty: "node", GoGetter: "Node"},
+			_jsii_.MemberProperty{JsiiProperty: "taskDefinition", GoGetter: "TaskDefinition"},
+			_jsii_.MemberProperty{JsiiProperty: "taskRole", GoGetter: "TaskRole"},
+			_jsii_.MemberMethod{JsiiMethod: "toString", GoMethod: "ToString"},
+			_jsii_.MemberMethod{JsiiMethod: "with", GoMethod: "With"},
+		},
+		func() interface{} {
+			j := jsiiProxy_DatadogECSManagedInstancesDaemonTaskDefinition{}
+			_jsii_.InitJsiiProxy(&j.Type__constructsConstruct)
+			return &j
+		},
+	)
+	_jsii_.RegisterStruct(
+		"datadog-cdk-constructs-v2.DatadogECSManagedInstancesProps",
+		reflect.TypeOf((*DatadogECSManagedInstancesProps)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"datadog-cdk-constructs-v2.DatadogFirelensOptions",
@@ -182,6 +225,14 @@ func init() {
 		reflect.TypeOf((*DatadogStepFunctionsProps)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
+		"datadog-cdk-constructs-v2.DeploymentAlarmConfiguration",
+		reflect.TypeOf((*DeploymentAlarmConfiguration)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"datadog-cdk-constructs-v2.DeploymentConfiguration",
+		reflect.TypeOf((*DeploymentConfiguration)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"datadog-cdk-constructs-v2.DogstatsdFeatureConfig",
 		reflect.TypeOf((*DogstatsdFeatureConfig)(nil)).Elem(),
 	)
@@ -209,8 +260,28 @@ func init() {
 		},
 	)
 	_jsii_.RegisterStruct(
+		"datadog-cdk-constructs-v2.ManagedInstancesLogConfiguration",
+		reflect.TypeOf((*ManagedInstancesLogConfiguration)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"datadog-cdk-constructs-v2.ManagedInstancesLogSecretOption",
+		reflect.TypeOf((*ManagedInstancesLogSecretOption)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"datadog-cdk-constructs-v2.ManagedInstancesVolume",
+		reflect.TypeOf((*ManagedInstancesVolume)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"datadog-cdk-constructs-v2.NetworkMonitoringFeatureConfig",
+		reflect.TypeOf((*NetworkMonitoringFeatureConfig)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
 		"datadog-cdk-constructs-v2.OrchestratorExplorerFeatureConfig",
 		reflect.TypeOf((*OrchestratorExplorerFeatureConfig)(nil)).Elem(),
+	)
+	_jsii_.RegisterStruct(
+		"datadog-cdk-constructs-v2.ProcessCollectionFeatureConfig",
+		reflect.TypeOf((*ProcessCollectionFeatureConfig)(nil)).Elem(),
 	)
 	_jsii_.RegisterStruct(
 		"datadog-cdk-constructs-v2.Runtime",
@@ -238,6 +309,26 @@ func init() {
 			"SERVICE": TagKeys_SERVICE,
 			"VERSION": TagKeys_VERSION,
 			"DD_TRACE_ENABLED": TagKeys_DD_TRACE_ENABLED,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"datadog-cdk-constructs-v2.TracerLanguage",
+		reflect.TypeOf((*TracerLanguage)(nil)).Elem(),
+		map[string]interface{}{
+			"JAVA": TracerLanguage_JAVA,
+			"NODEJS": TracerLanguage_NODEJS,
+			"DOTNET": TracerLanguage_DOTNET,
+			"PYTHON": TracerLanguage_PYTHON,
+			"RUBY": TracerLanguage_RUBY,
+			"PHP": TracerLanguage_PHP,
+		},
+	)
+	_jsii_.RegisterEnum(
+		"datadog-cdk-constructs-v2.TracerLibc",
+		reflect.TypeOf((*TracerLibc)(nil)).Elem(),
+		map[string]interface{}{
+			"GLIBC": TracerLibc_GLIBC,
+			"MUSL": TracerLibc_MUSL,
 		},
 	)
 	_jsii_.RegisterClass(
