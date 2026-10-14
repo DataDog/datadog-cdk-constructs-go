@@ -86,6 +86,11 @@ type DatadogECSFargateTaskDefinition interface {
 	PidMode() awsecs.PidMode
 	// Whether this task definition has at least a container that references a specific JSON field of a secret stored in Secrets Manager.
 	ReferencesSecretJsonField() *bool
+	// The runtime platform (operating system family and CPU architecture) for the task definition, or `undefined` if none was configured.
+	//
+	// Intentionally public: `runtimePlatform` is already public API as an input prop and on the
+	// underlying L1 `CfnTaskDefinition`, so reading it back from the L2 is deliberate read-parity.
+	RuntimePlatform() *awsecs.RuntimePlatform
 	// The stack in which this resource is defined.
 	Stack() awscdk.Stack
 	// The full Amazon Resource Name (ARN) of the task definition.
@@ -94,6 +99,8 @@ type DatadogECSFargateTaskDefinition interface {
 	TaskDefinitionRef() *interfacesawsecs.TaskDefinitionReference
 	// The name of the IAM role that grants containers in the task permission to call AWS APIs on your behalf.
 	TaskRole() awsiam.IRole
+	// The container that copies the tracer, added with the container that loads the tracer.
+	TracerContainer() awsecs.ContainerDefinition
 	// Adds a new container to the task definition.
 	//
 	// Modifies properties of container to support specified agent configuration in task.
@@ -401,6 +408,16 @@ func (j *jsiiProxy_DatadogECSFargateTaskDefinition) ReferencesSecretJsonField() 
 	return returns
 }
 
+func (j *jsiiProxy_DatadogECSFargateTaskDefinition) RuntimePlatform() *awsecs.RuntimePlatform {
+	var returns *awsecs.RuntimePlatform
+	_jsii_.Get(
+		j,
+		"runtimePlatform",
+		&returns,
+	)
+	return returns
+}
+
 func (j *jsiiProxy_DatadogECSFargateTaskDefinition) Stack() awscdk.Stack {
 	var returns awscdk.Stack
 	_jsii_.Get(
@@ -436,6 +453,16 @@ func (j *jsiiProxy_DatadogECSFargateTaskDefinition) TaskRole() awsiam.IRole {
 	_jsii_.Get(
 		j,
 		"taskRole",
+		&returns,
+	)
+	return returns
+}
+
+func (j *jsiiProxy_DatadogECSFargateTaskDefinition) TracerContainer() awsecs.ContainerDefinition {
+	var returns awsecs.ContainerDefinition
+	_jsii_.Get(
+		j,
+		"tracerContainer",
 		&returns,
 	)
 	return returns

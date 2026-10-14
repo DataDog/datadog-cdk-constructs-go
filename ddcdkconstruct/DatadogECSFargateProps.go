@@ -72,6 +72,10 @@ type DatadogECSFargateProps struct {
 	//
 	// Used for tagging (UST).
 	Version *string `field:"optional" json:"version" yaml:"version"`
+	// Automatic APM instrumentation configuration.
+	//
+	// Adds the Datadog tracer to an application container without changing its image.
+	ApmInstrumentation *APMInstrumentationConfig `field:"optional" json:"apmInstrumentation" yaml:"apmInstrumentation"`
 	Cws *FargateCWSFeatureConfig `field:"optional" json:"cws" yaml:"cws"`
 	LogCollection *FargateLogCollectionFeatureConfig `field:"optional" json:"logCollection" yaml:"logCollection"`
 }
