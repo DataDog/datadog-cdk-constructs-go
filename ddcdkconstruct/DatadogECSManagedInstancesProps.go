@@ -47,6 +47,8 @@ type DatadogECSManagedInstancesProps struct {
 	EnvironmentVariables *map[string]*string `field:"optional" json:"environmentVariables" yaml:"environmentVariables"`
 	// Global tags to apply to all data sent by the Agent.
 	//
+	// Use a comma-separated list of key:value pairs, for example "env:prod,team:payments".
+	// Tag values can't contain commas or whitespace.
 	// Overrides any DD_TAGS values in environmentVariables.
 	GlobalTags *string `field:"optional" json:"globalTags" yaml:"globalTags"`
 	// The version of the Datadog Agent container image to use.
