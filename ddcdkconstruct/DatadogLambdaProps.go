@@ -51,6 +51,12 @@ type DatadogLambdaProps struct {
 	Service *string `field:"optional" json:"service" yaml:"service"`
 	Site *string `field:"optional" json:"site" yaml:"site"`
 	SourceCodeIntegration *bool `field:"optional" json:"sourceCodeIntegration" yaml:"sourceCodeIntegration"`
+	// Silence the warning emitted when an instrumented Lambda function has less than 256 MB of memory.
+	//
+	// The construct instruments the function either way.
+	// Default: false.
+	//
+	SuppressLowMemoryWarning *bool `field:"optional" json:"suppressLowMemoryWarning" yaml:"suppressLowMemoryWarning"`
 	Tags *string `field:"optional" json:"tags" yaml:"tags"`
 	UseLayersFromAccount *string `field:"optional" json:"useLayersFromAccount" yaml:"useLayersFromAccount"`
 	Version *string `field:"optional" json:"version" yaml:"version"`
